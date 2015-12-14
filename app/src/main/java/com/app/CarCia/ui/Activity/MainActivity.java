@@ -35,6 +35,7 @@ public class MainActivity extends BaseAty implements RadioGroup.OnCheckedChangeL
     private UpdateUIBroadcast broadcast;
     private HomeBean.ListEntity listEntity;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,8 +73,7 @@ public class MainActivity extends BaseAty implements RadioGroup.OnCheckedChangeL
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
 //        if (hasFocus)
-//            new ShareDialog(this);
-
+//            new ShareDialog(this).show();
     }
 
     @Override

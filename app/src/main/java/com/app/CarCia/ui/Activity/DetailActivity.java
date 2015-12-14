@@ -5,7 +5,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -14,19 +17,16 @@ import com.app.CarCia.R;
 import com.app.CarCia.adapters.ChildViewPagerAdapter;
 import com.app.CarCia.base.BaseAty;
 import com.app.CarCia.dialog.DetailZoomDialog;
+import com.app.CarCia.dialog.ShareDialog;
 import com.app.CarCia.entity.ItemProductBean;
-import com.app.CarCia.facebook.samples.zoomable.DefaultZoomableController;
-import com.app.CarCia.facebook.samples.zoomable.ZoomableDraweeView;
+import com.app.CarCia.eum.SharePlatform;
 import com.app.CarCia.impl.DragStateChangedListener;
+import com.app.CarCia.impl.OnShareItemClickListener;
 import com.app.CarCia.impl.ScrollListener;
+import com.app.CarCia.model.ShareModel;
 import com.app.CarCia.widget.ClashViewPager;
-import com.app.CarCia.widget.PinchToZoomDraweeView;
 import com.app.CarCia.widget.VHDLayout;
 import com.app.CarCia.widget.VHDLayoutChild;
-import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.generic.GenericDraweeHierarchy;
-import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
-import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.ArrayList;
@@ -35,7 +35,8 @@ import java.util.List;
 
 public class DetailActivity extends BaseAty<ItemProductBean.ListEntity>
         implements ScrollListener, ViewPager
-        .OnPageChangeListener, DragStateChangedListener {
+        .OnPageChangeListener, DragStateChangedListener,
+        OnShareItemClickListener, Toolbar.OnMenuItemClickListener {
 
     private VHDLayoutChild vhdChild;
     private VHDLayout vhdParent;
@@ -46,6 +47,7 @@ public class DetailActivity extends BaseAty<ItemProductBean.ListEntity>
     private List<View> simpleDraweeViews = new ArrayList<>();
     private int currentPos = -1;
     private ChildViewPagerAdapter childViewPagerAdapter;
+    private ShareModel shareModel = new ShareModel();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +67,7 @@ public class DetailActivity extends BaseAty<ItemProductBean.ListEntity>
     @Override
     protected void initViews() {
         String title = getIntent().getStringExtra("title");
-        defaultTitleBar(this).setTitle(title);
+        defaultTitleBar(this).setTitle(title).setOnMenuItemClickListener(this);
         vhdChild = detailLayout.vhdChild;
         vhdParent = detailLayout.vhdParent;
         viewPager = detailLayout.viewPager;
@@ -153,6 +155,7 @@ public class DetailActivity extends BaseAty<ItemProductBean.ListEntity>
         }
     }
 
+
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -179,6 +182,53 @@ public class DetailActivity extends BaseAty<ItemProductBean.ListEntity>
     @Override
     public void stateChanged(boolean isOpen) {
         viewPager.setIsEnable(!isOpen);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_share, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        if (item.getItemId() == R.id.menu_share) {
+            ShareDialog shareDialog = new ShareDialog(this);
+            shareDialog.setOnShareItemClickListener(this);
+            shareDialog.show();
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void onShareItemClick(SharePlatform sharePlatform) {
+        ShareModel.ShareParams.imageUrl = "http://e.hiphotos.baidu" +
+                ".com/zhidao/pic/item/fcfaaf51f3deb48fa05af774f31f3a292df5786c.jpg";
+        ShareModel.ShareParams.text = "text";
+        ShareModel.ShareParams.title = "title";
+        ShareModel.ShareParams.titleUrl = "www.baidu.com";
+        switch (sharePlatform) {
+            case Q_ZONE:
+                shareModel.shareToQZone();
+                break;
+            case QQ:
+                shareModel.shareToQQ();
+                break;
+            case QQ_WEIBO:
+                shareModel.shareToQQWeibo();
+                break;
+            case SHORT_MESSAGE:
+                shareModel.shareToShortMessage();
+                break;
+            case WECHAT:
+                shareModel.shareToWechatFriends();
+                break;
+            case WECHAT_MOMENT:
+                shareModel.shareToWechatMoment();
+                break;
+        }
+
     }
 
     class ViewPagerAdapter extends PagerAdapter {

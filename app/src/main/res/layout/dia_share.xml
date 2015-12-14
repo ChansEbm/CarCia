@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data class="DiaShareLayout"/>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:gravity="center"
+                  android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/ib_wechat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@mipmap/ssdk_oks_logo_wechat"/>
+
+            <ImageButton
+                android:id="@+id/ib_wechat_moment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/item_horizontal_margin"
+                android:layout_marginStart="@dimen/item_horizontal_margin"
+                android:background="@android:color/transparent"
+                android:src="@mipmap/ssdk_oks_logo_wechatmoments"/>
+
+            <ImageButton
+                android:id="@+id/ib_tencent_weibo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@mipmap/ssdk_oks_logo_tencentweibo"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/item_vertical_margin"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/ib_qq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@mipmap/ssdk_oks_logo_qq"/>
+
+            <ImageButton
+                android:id="@+id/ib_qzone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/item_horizontal_margin"
+                android:layout_marginStart="@dimen/item_horizontal_margin"
+                android:background="@android:color/transparent"
+                android:src="@mipmap/ssdk_oks_logo_qzone"/>
+
+            <ImageButton
+                android:id="@+id/ib_short_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@mipmap/ssdk_oks_logo_shortmessage"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

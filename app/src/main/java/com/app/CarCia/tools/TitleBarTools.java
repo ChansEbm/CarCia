@@ -137,6 +137,12 @@ public class TitleBarTools {
         return this;
     }
 
+    public TitleBarTools inflateMenu(int menuRes) {
+        setSupportActionBar();
+        toolbar.inflateMenu(menuRes);
+        return this;
+    }
+
     //设置Nav图标
     public TitleBarTools setNavigationIcon(int resId) {
         if (resId != 0) {

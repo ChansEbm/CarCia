@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.app.CarCia.entity.PhotoAlbumBean;
 
@@ -54,4 +56,6 @@ public class SystemTools {
                 "image/jpeg"}, MediaStore.Images.Media.DATE_MODIFIED);
         return cursor;
     }
+
+
 }
