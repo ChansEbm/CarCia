@@ -1,0 +1,161 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data class=".ProductLayout"></data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_white"
+        android:orientation="vertical"
+        tools:context="com.app.CarCia.ui.Fragment.Brand.ProductFragment">
+
+        <LinearLayout
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="@dimen/item_vertical_margin"
+            android:background="@drawable/shape_gravy_frame"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/item_vertical_margin">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/item_vertical_margin"
+                android:contentDescription="@string/app_name"
+                android:src="@mipmap/icon_search"/>
+
+            <TextView
+                style="@style/textStyle"
+                android:text="@string/please_input_keyword"
+                android:textColor="@color/color_text_gravy"
+                android:textSize="@dimen/text_middle_size"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/shape_gravy_frame"
+            android:orientation="horizontal"
+            android:padding="0.5dp">
+
+            <FrameLayout
+                android:id="@+id/style_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selector_white_gravy"
+                android:clickable="true"
+                android:descendantFocusability="blocksDescendants">
+
+                <RadioButton
+                    style="@style/RBDefaultStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:drawableEnd="@drawable/selector_arrow_checked"
+                    android:drawablePadding="@dimen/item_vertical_margin"
+                    android:ellipsize="middle"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:singleLine="true"
+                    android:text="@string/style"
+                    android:textColor="@color/selector_brand_tab"
+                    android:textSize="@dimen/text_middle_size"/>
+            </FrameLayout>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/item_horizontal_margin"
+                android:layout_marginTop="@dimen/item_horizontal_margin"
+                android:background="@color/color_line"/>
+
+            <FrameLayout
+                android:id="@+id/function_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selector_white_gravy"
+                android:clickable="true"
+                android:descendantFocusability="blocksDescendants">
+
+                <RadioButton
+                    style="@style/RBDefaultStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:drawableEnd="@drawable/selector_arrow_checked"
+                    android:drawablePadding="@dimen/item_vertical_margin"
+                    android:ellipsize="middle"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:singleLine="true"
+                    android:text="@string/function"
+                    android:textColor="@color/selector_brand_tab"
+                    android:textSize="@dimen/text_middle_size"/>
+            </FrameLayout>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/item_horizontal_margin"
+                android:layout_marginTop="@dimen/item_horizontal_margin"
+                android:background="@color/color_line"/>
+
+            <FrameLayout
+                android:id="@+id/classify_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selector_white_gravy"
+                android:clickable="true"
+                android:descendantFocusability="blocksDescendants">
+
+                <RadioButton
+                    style="@style/RBDefaultStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:drawableEnd="@drawable/selector_arrow_checked"
+                    android:drawablePadding="@dimen/item_vertical_margin"
+                    android:ellipsize="middle"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:singleLine="true"
+
+                    android:text="@string/classify"
+                    android:textColor="@color/selector_brand_tab"
+                    android:textSize="@dimen/text_middle_size"/>
+            </FrameLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/color_background"/>
+
+            <View
+                android:id="@+id/transparent_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/color_30_black"
+                android:visibility="gone"/>
+        </FrameLayout>
+    </LinearLayout>
+</layout>

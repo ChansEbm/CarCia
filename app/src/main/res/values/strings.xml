@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">加西亚</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--首页Tab-->
+    <string name="main_tab_home">首页</string>
+    <string name="main_tab_brand">品牌</string>
+    <string name="main_tab_vip">会员</string>
+    <string name="main_tab_more">更多</string>
+
+    <!--hint-->
+    <string name="please_input_keyword">请输入关键字</string>
+    <string name="please_input_title">请输入标题</string>
+    <!--headLine-->
+    <string name="style">风格</string>
+    <string name="function">功能</string>
+    <string name="classify">分类</string>
+    <string name="product_spec">产品规格 :</string>
+    <string name="product_no">产品编号 :</string>
+    <string name="log_in_CarCia">登录加西亚官网</string>
+    <string name="contact_CaiCia">一键联系加西亚</string>
+    <string name="cache_cleaner">清理缓存</string>
+    <string name="user_guide">用户指南</string>
+    <string name="technology_support">技术支持:爱皮皮科技</string>
+    <string name="app_phone">爱皮皮科技 0757-83204766</string>
+    <string name="positive">确定</string>
+    <string name="negative">取消</string>
+    <string name="space">功能空间</string>
+    <string name="category">产品类别</string>
+    <string name="space_business">商业空间</string>
+    <string name="dialog_content">即将拨打</string>
+    <string name="input_head">输入标题</string>
+    <string name="choose_type">选择类型</string>
+    <string name="upload_picture">上传图片</string>
+    <string name="input_note">输入摘要</string>
+    <string name="not_record_yet">未录入语音</string>
+    <string name="pull_load_detail">上拉查看图文详情</string>
+    <string name="pic_detail">图文详情</string>
+    <string name="detail">详情</string>
+    <string name="delete">删除</string>
+    <string name="play">播放</string>
+    <string name="take_photo">拍照</string>
+    <string name="select_from_album">从相册选择</string>
+    <!--title-->
+    <string name="title_activity_main2">s</string>
+    <string name="search">搜索</string>
+    <string name="i_need_order_to">我要下单</string>
+    <string name="product_introduce">产品介绍</string>
+    <string name="dial_dialog">拨号</string>
+    <string name="gallery">相册</string>
+    <string name="album">相薄</string>
+    <string name="order_cate">选择类别</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="vip">会员中心</string>
+    <string name="more">更多</string>
+
+</resources>
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data class="ItemOrderCateLayout">
+
+        <variable
+            name="type"
+            type="com.app.CarCia.entity.OrderCateBean.ListEntity"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:background="@drawable/selector_white_gravy"
+                  android:gravity="center_vertical"
+                  android:minHeight="35dp"
+                  android:orientation="vertical"
+                  android:paddingStart="@dimen/item_horizontal_margin">
+
+        <TextView
+            style="@style/textStyle"
+            android:gravity="center_vertical"
+            android:text="@{type.name}"/>
+    </LinearLayout>
+</layout>

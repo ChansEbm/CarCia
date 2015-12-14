@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class=".BottomBinding">
+
+        <variable
+            name="bottom"
+            type="com.app.CarCia.entity.HomeBean.ListEntity"/>
+    </data>
+
+    <LinearLayout
+        android:id="@+id/home_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="1.5dp"
+        android:background="@drawable/selector_white_gravy"
+        android:gravity="center"
+        android:minHeight="96dp"
+        android:minWidth="121dp"
+        android:orientation="vertical">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/simpleDraweeView"
+            style="@style/DefaultSimpleDraweeView"
+            android:layout_width="101dp"
+            android:layout_height="66dp"
+            app:actualImageScaleType="centerCrop"
+            app:placeholderImageScaleType="centerCrop"/>
+
+        <TextView
+            style="@style/textStyle"
+            android:layout_marginTop="@dimen/item_vertical_margin"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:text="@{bottom.title}"
+            />
+    </LinearLayout>
+</layout>

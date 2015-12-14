@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="theme_primary">#E6000000</color>
+    <color name="color_white">#ffffff</color>
+    <color name="color_org_normal">#c78f2c</color>
+    <color name="color_org_press">#FF966C21</color>
+    <color name="color_org_light">#FFF7B94C</color>
+    <color name="color_unable">#FF8F8E8E</color>
+    <color name="color_text_dark">#333333</color>
+    <color name="color_text_gravy">#838383</color>
+    <color name="color_text_red">#e10202</color>
+    <color name="color_text_select">#c78f2c</color>
+    <color name="color_line_background">#9c9c9c</color>
+    <color name="color_background">#dcdddd</color>
+    <color name="color_item_high_light">#f9949494</color>
+    <color name="color_theme_secondary_text_inverted">#838383</color>
+    <color name="color_snack_bar_action_text_color">#5eab82</color>
+    <color name="color_snack_bar_background">#c5000000</color>
+    <color name="color_main_tab_unchecked">#CCffffff</color>
+    <color name="color_main_tab_checked">#c78f2c</color>
+    <color name="color_line">#dcdddd</color>
+
+    <!--translate-->
+    <color name="color_50_white">#80ffffff</color>
+    <color name="color_70_white">#B3ffffff</color>
+    <color name="color_70_black">#B3000000</color>
+    <color name="color_50_black">#80000000</color>
+    <color name="color_30_black">#4D000000</color>
+</resources>

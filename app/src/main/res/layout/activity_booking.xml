@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data class=".BookingLayout"/>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                 xmlns:tools="http://schemas.android.com/tools"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:background="@color/theme_primary"
+                 android:focusable="true"
+                 android:focusableInTouchMode="true"
+                 tools:context="com.app.CarCia.ui.Activity.BookingActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_background"
+
+            android:orientation="vertical">
+
+            <include layout="@layout/title_bar"/>
+
+            <android.support.v4.widget.NestedScrollView
+                android:id="@+id/nestedScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <EditText
+                        android:id="@+id/edt_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="41dp"
+                        android:layout_marginTop="@dimen/item_vertical_margin"
+                        android:background="@color/color_white"
+                        android:gravity="center_vertical"
+                        android:hint="@string/please_input_title"
+                        android:paddingStart="@dimen/item_horizontal_margin"
+                        android:textSize="@dimen/text_normal_size"
+                        />
+
+
+                    <FrameLayout
+                        android:id="@+id/order_cate"
+                        android:layout_width="match_parent"
+                        android:layout_height="41dp"
+                        android:layout_marginTop="@dimen/item_vertical_margin"
+                        android:background="@drawable/selector_white_gravy"
+                        android:paddingEnd="@dimen/item_horizontal_margin"
+                        android:paddingStart="@dimen/item_horizontal_margin">
+
+                        <TextView
+                            android:id="@+id/tv_cate"
+                            style="@style/textStyle"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/choose_type"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|end"
+                            android:src="@mipmap/icon_arrow_right"/>
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/item_vertical_margin"
+                        android:background="@color/color_white"
+                        android:gravity="center_vertical"
+                        android:minHeight="83dp"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/item_horizontal_margin">
+
+                        <TextView
+                            style="@style/textStyle"
+                            android:text="@string/upload_picture"/>
+
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/item_vertical_margin"
+                            android:scrollbars="none">
+
+                            <LinearLayout
+                                android:id="@+id/pic_linearLayout"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.facebook.drawee.view.SimpleDraweeView
+                                    android:id="@+id/simpleDraweeView"
+                                    style="@style/DefaultSimpleDraweeView"
+                                    android:layout_width="55dp"
+                                    android:layout_height="55dp"
+                                    app:actualImageScaleType="centerCrop"
+                                    app:placeholderImage="@mipmap/icon_add_picture"/>
+                            </LinearLayout>
+
+                        </HorizontalScrollView>
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/edt_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="84dp"
+                        android:layout_marginTop="@dimen/item_vertical_margin"
+                        android:background="@color/color_white"
+                        android:gravity="top"
+                        android:hint="@string/input_note"
+                        android:padding="@dimen/item_horizontal_margin"
+                        android:textSize="@dimen/text_normal_size"/>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/item_vertical_margin"
+                        android:background="@color/color_white"
+                        android:gravity="center_vertical"
+                        android:minHeight="41dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/record_text"
+                            style="@style/textStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="start"
+                            android:paddingStart="@dimen/item_horizontal_margin"
+                            android:tag="tag"
+                            android:text="@string/not_record_yet"/>
+                    </LinearLayout>
+
+                    <com.app.CarCia.widget.RecordButton
+                        android:id="@+id/record"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="41dp"
+                        android:background="@mipmap/icon_voice"/>
+
+                    <TextView
+                        style="@style/textStyle"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/item_vertical_margin"
+                        android:text="语音下单"
+                        android:textColor="@color/color_text_gravy"/>
+
+                    <Button
+                        android:id="@+id/submit"
+                        android:layout_width="182dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="34dp"
+                        android:layout_marginTop="34dp"
+                        android:background="@drawable/selector_orange_deep"
+                        android:text="提交"
+                        android:textColor="@color/color_white"/>
+                </LinearLayout>
+            </android.support.v4.widget.NestedScrollView>
+        </LinearLayout>
+    </FrameLayout>
+</layout>

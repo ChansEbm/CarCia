@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class=".ItemPhotoAlbum">
+
+        <variable
+            name="album"
+            type="com.app.CarCia.entity.PhotoAlbumBean"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_white_gravy"
+        android:gravity="center_vertical"
+        android:minHeight="60dp"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/item_horizontal_margin"
+        android:paddingStart="@dimen/item_horizontal_margin">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/simpleDraweeView"
+            style="@style/DefaultSimpleDraweeView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:actualImageScaleType="centerCrop"/>
+
+        <TextView
+            style="@style/textStyle"
+            android:layout_width="match_parent"
+            android:layout_marginStart="@dimen/item_horizontal_margin"
+            android:drawableEnd="@mipmap/icon_arrow_right"
+            android:gravity="start"
+            android:text="@{album.title}"
+            android:textSize="@dimen/text_large_size"/>
+    </LinearLayout>
+</layout>

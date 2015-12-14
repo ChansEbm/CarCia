@@ -1,0 +1,88 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.app.CarCia.ui.Fragment.Main.HomeFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/include"
+                layout="@layout/title_bar" />
+
+            <ScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/color_background"
+                android:fillViewport="true"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/topViewPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="142dp" />
+
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/topRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/item_vertical_margin"
+                        android:layout_marginStart="@dimen/item_vertical_margin" />
+
+
+                    <TextView
+                        style="@style/textStyle"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="@dimen/item_vertical_margin"
+                        android:text="@string/space" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color_line" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/middleRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/item_vertical_margin"
+                        android:layout_marginStart="@dimen/item_vertical_margin" />
+
+                    <TextView
+                        style="@style/textStyle"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="@dimen/item_vertical_margin"
+                        android:gravity="center_vertical"
+                        android:text="@string/category" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/bottomRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/item_vertical_margin"
+                        android:layout_marginEnd="@dimen/item_vertical_margin"
+                        android:layout_marginStart="@dimen/item_vertical_margin" />
+
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/bottomViewPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="142dp" />
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </FrameLayout>
+
+</layout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data class="ItemPopFilterLayout">
+
+        <variable
+            name="item"
+            type="com.app.CarCia.entity.HomeBean.ListEntity"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/selector_white_gravy"
+        android:gravity="center"
+        android:minHeight="40dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:clickable="false"
+            android:drawableEnd="@color/color_text_gravy"
+            android:ellipsize="middle"
+            android:gravity="center"
+            android:minHeight="40dp"
+            android:singleLine="true"
+            android:text="@{item.title}"
+            android:textColor="@color/selector_pop_filter"
+            android:textSize="@dimen/text_middle_size"/>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="20dp"
+            android:background="@color/color_line"/>
+    </LinearLayout>
+</layout>

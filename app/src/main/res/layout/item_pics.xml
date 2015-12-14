@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data class=".PictureItem"></data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:orientation="vertical">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/simpleDraweeView"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_gravity="start|bottom"
+            app:actualImageScaleType="centerCrop"
+            app:placeholderImage="@mipmap/ic_add_default"
+            app:placeholderImageScaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/cancel"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="end"
+            android:clickable="true"
+            android:src="@mipmap/ic_cancel" />
+
+    </FrameLayout>
+</layout>

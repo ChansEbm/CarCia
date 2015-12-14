@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data
+        class=".PhotoWall"/>
+
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/theme_primary">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_background"
+            android:orientation="vertical"
+            tools:context="com.app.CarCia.ui.Activity.PhotoWallActivity">
+
+            <include layout="@layout/title_bar"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/item_vertical_margin"
+                    android:layout_marginStart="@dimen/item_vertical_margin"
+                    android:layout_marginTop="@dimen/item_vertical_margin"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="bottom"
+                    android:background="@color/color_70_black"
+                    android:paddingEnd="@dimen/item_horizontal_margin">
+
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_width="61dp"
+                        android:layout_height="37dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:background="@drawable/selector_orange_deep"
+                        android:clickable="true"
+                        android:enabled="false"
+                        android:gravity="center"
+                        android:onClick="onClick"
+                        android:text="@string/positive"
+                        android:textColor="@color/selector_album_text"
+                        android:textSize="@dimen/text_normal_size"/>
+                </FrameLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </FrameLayout>
+</layout>
