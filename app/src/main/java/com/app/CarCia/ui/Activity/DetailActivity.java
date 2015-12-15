@@ -113,7 +113,6 @@ public class DetailActivity extends BaseAty<ItemProductBean.ListEntity>
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
     }
@@ -138,7 +137,6 @@ public class DetailActivity extends BaseAty<ItemProductBean.ListEntity>
                 detailZoomDialog.setUrl(list.get(pos).getImage());
                 detailZoomDialog.show();
                 break;
-
         }
     }
 
@@ -193,9 +191,9 @@ public class DetailActivity extends BaseAty<ItemProductBean.ListEntity>
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         if (item.getItemId() == R.id.menu_share) {
-            ShareDialog shareDialog = new ShareDialog(this);
-            shareDialog.setOnShareItemClickListener(this);
-            shareDialog.show();
+//            ShareDialog shareDialog = new ShareDialog(this);
+//            shareDialog.setOnShareItemClickListener(this);
+//            shareDialog.show();
             return true;
         }
         return false;

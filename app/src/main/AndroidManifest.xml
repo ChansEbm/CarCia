@@ -37,6 +37,7 @@
     <application
         android:name=".base.BaseApplication"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/icon_app"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
@@ -74,24 +75,20 @@
         </activity>
         <activity android:name=".ui.Activity.DetailWebActivity">
         </activity>
-        <activity
-            android:name=".ui.Main2Activity"
-            android:label="@string/title_activity_main2"
-            android:parentActivityName=".base.BaseAty">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.app.CarCia.base.BaseAty"/>
+        <activity android:name=".ui.Activity.VideoActivity">
         </activity>
+
         <activity android:name=".ui.Activity.UserGuideActivity">
         </activity>
-        <activity android:name="com.app.CarCia.ui.Activity.WebWebActivity">
+        <activity android:name=".ui.Activity.WebWebActivity">
         </activity>
-        <!-- QQ客户端回调 2.6.3开始独立添加activity来处理QQ客户端的回调-->
+        <!-- QQ客户端回调 2.6.3开始独立添加activity来处理QQ客户端的回调 -->
         <activity
             android:name="com.mob.tools.MobUIShell"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+
             <!--
             如果集成QQ分享，或者使用QQ客户端来进行QQ空间的
             分享，须要在此处添加一个对ACTION_VIEW事件的过滤器，
@@ -99,18 +96,24 @@
             如果此过滤器不设置，则分享结束以后不能得到正确的回调
             -->
             <intent-filter>
-                <data android:scheme="tencent100371282" />
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="tencent100371282"/>
+
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
             </intent-filter>
-        </activity>        <activity
+        </activity>
+        <activity
             android:name=".wxapi.WXEntryActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait" />
-
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity
+            android:name=".ui.Activity.VideoWebActivity"
+            >
+        </activity>
     </application>
 
 </manifest>

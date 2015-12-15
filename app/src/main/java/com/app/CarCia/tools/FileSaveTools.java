@@ -113,8 +113,7 @@ public class FileSaveTools {
      * @return 返回图片缓存目录
      */
     public String getPictureCacheDir() {
-        String picturePath = SDCardTools.getSDCardPosition() + "CarCia" +
-                File.separator + "pictureCache";
+        String picturePath =getApplicationCacheDir() + "pictureCache";
         File file = new File(picturePath);
         if (!file.exists()) {
             file.mkdirs();
@@ -123,13 +122,24 @@ public class FileSaveTools {
     }
 
     public String getRecordDir() {
-        String picturePath = SDCardTools.getSDCardPosition() + "CarCia" +
-                File.separator + "Record";
+        String picturePath =getApplicationCacheDir() + "Record";
         File file = new File(picturePath);
         if (!file.exists()) {
             file.mkdirs();
         }
         return file.getPath() + File.separator;
+    }
+    public String getVideoDir() {
+        String videoPath = getApplicationCacheDir() + "Video";
+        File file = new File(videoPath);
+        if (!file.exists()) {
+            file.mkdir();
+        }
+        return file.getPath() + File.separator;
+    }
+
+    private String getApplicationCacheDir() {
+        return SDCardTools.getSDCardPosition() + "CarCia" + File.separator;
     }
 
     private static class FileSaveInstance {

@@ -3,12 +3,15 @@ package com.app.CarCia.ui.Fragment.Brand;
 
 import android.app.Fragment;
 import android.view.View;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.app.CarCia.R;
 import com.app.CarCia.SpecialLayout;
 import com.app.CarCia.base.BaseFgm;
+
+import java.lang.annotation.Annotation;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,7 +38,16 @@ public class SpecialFragment extends BaseFgm {
         });
         webView.loadUrl("http://diy.appbaba.com/garcia/index" +
                 ".php?m=content&c=app&a=subject_list");
+        webView.addJavascriptInterface(new WebJsonShare(), "share");
 
+    }
+
+    class WebJsonShare {
+
+        @JavascriptInterface
+        void onShare(String json) {
+
+        }
 
     }
 

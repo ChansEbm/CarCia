@@ -1,10 +1,11 @@
 package com.app.CarCia.ui.Activity;
 
 import android.content.Intent;
-import android.os.*;
+import android.os.Bundle;
 import android.os.Process;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.RadioGroup;
 
@@ -13,7 +14,6 @@ import com.app.CarCia.MainBinding;
 import com.app.CarCia.R;
 import com.app.CarCia.base.BaseAty;
 import com.app.CarCia.broadcast.UpdateUIBroadcast;
-import com.app.CarCia.dialog.ShareDialog;
 import com.app.CarCia.entity.HomeBean;
 import com.app.CarCia.impl.UpdateUIListener;
 import com.app.CarCia.tools.AppTools;
@@ -35,12 +35,12 @@ public class MainActivity extends BaseAty implements RadioGroup.OnCheckedChangeL
     private UpdateUIBroadcast broadcast;
     private HomeBean.ListEntity listEntity;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         mainBinding = (MainBinding) viewDataBinding;
+        start(VideoWebActivity.class);
     }
 
     @Override
@@ -59,7 +59,6 @@ public class MainActivity extends BaseAty implements RadioGroup.OnCheckedChangeL
         if (!fragment.isAdded()) {
             fragmentTransaction.add(R.id.fragment_content, fragment).commitAllowingStateLoss();
         }
-
     }
 
     @Override
@@ -131,8 +130,11 @@ public class MainActivity extends BaseAty implements RadioGroup.OnCheckedChangeL
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        android.os.Process.killProcess(Process.myPid());
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            android.os.Process.killProcess(Process.myPid());
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

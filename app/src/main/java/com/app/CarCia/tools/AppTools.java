@@ -373,6 +373,10 @@ public class AppTools {
         return fileSaveTools.getPictureCacheDir();
     }
 
+    public static String getVideoCacheDir() {
+        return fileSaveTools.getVideoDir();
+    }
+
     public static String getRecordDir() {
         return fileSaveTools.getRecordDir();
     }
