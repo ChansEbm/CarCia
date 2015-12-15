@@ -5,11 +5,12 @@ import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import com.app.CarCia.R;
 import com.app.CarCia.VideoWebLayout;
 import com.app.CarCia.base.BaseAty;
+
+import java.lang.reflect.InvocationTargetException;
 
 public class VideoWebActivity extends BaseAty {
     private WebView webView;
@@ -38,15 +39,10 @@ public class VideoWebActivity extends BaseAty {
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setUseWideViewPort(true);
         webView.setVisibility(View.VISIBLE);
+        webView.getSettings().setPluginState(WebSettings.PluginState.ON);
 
-        webView.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                return true;
-            }
-        });
-
-        webView.loadUrl("http://www.iermu.com/view_share.php?shareid=b4f433b3908bc22cc05decfa56ed5b9f&uk=1462218351&share=2");
+        String video = "\"<html><body>Youtube video .. <br> <iframe width=\"100%\" height=\"100%\" src=\"http://www.iermu.com/video/30e4242a5e47874fd7e7cf88dcd3be5b/3632437978?l=\" frameborder=\"0\" allowfullscreen></iframe></body></html>\";";
+        webView.loadData(video, "text/html", "utf-8");
 
     }
 
@@ -57,6 +53,25 @@ public class VideoWebActivity extends BaseAty {
 
     @Override
     protected void onClick(int id, View view) {
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        try {
+            Class.forName("android.webkit.WebView")
+                    .getMethod("onPause", (Class[]) null)
+                    .invoke(webView, (Object[]) null);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
     }
 }
