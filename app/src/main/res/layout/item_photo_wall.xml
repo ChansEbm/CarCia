@@ -20,7 +20,7 @@
             android:layout_width="88dp"
             android:layout_height="88dp"
             app:actualImageScaleType="centerCrop"
-            app:placeholderImageScaleType="centerCrop"/>
+           />
 
         <ImageView
             android:id="@+id/iv_tick"

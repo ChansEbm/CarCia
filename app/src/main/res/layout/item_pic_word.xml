@@ -26,7 +26,7 @@
             android:layout_height="66dp"
             android:clickable="false"
             app:actualImageScaleType="centerCrop"
-            app:placeholderImageScaleType="centerCrop"/>
+        />
 
         <TextView
             style="@style/textStyle"

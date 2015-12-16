@@ -1,50 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    package="com.app.CarCia"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.app.CarCia">
 
     <permission
         android:name="com.app.CarCia.permission.JPUSH_MESSAGE"
-        android:protectionLevel="signature"/>
+        android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.app.CarCia.permission.JPUSH_MESSAGE"/>
-    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
-    <uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL"/>
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.app.CarCia.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!-- 这个权限用于进行网络定位 -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- 这个权限用于访问GPS定位 -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <!-- 用于读取手机当前的状态 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- 访问网络，网络定位需要上网 -->
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <!-- SD卡读取权限，用户写入离线定位数据 -->
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
-    <uses-permission android:name="android.permission.READ_PROFILE"/>
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:name=".base.BaseApplication"
@@ -55,51 +54,40 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="7eTTxG2H0X9nWL1zc8R7hMON"/>
+            android:value="7eTTxG2H0X9nWL1zc8R7hMON" />
         <meta-data
             android:name="JPUSH_CHANNEL"
-            android:value="developer-default"/>
+            android:value="developer-default" />
         <meta-data
             android:name="JPUSH_APPKEY"
-            android:value="ca8fd69a01541165a22cf671"/>
+            android:value="ca8fd69a01541165a22cf671" />
 
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote">
-        </service>
+            android:process=":remote"></service>
 
         <activity
-            android:name=".ui.Activity.MainActivity"
+            android:name=".ui.Activity.LaunchActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.Activity.SearchActivity">
-        </activity>
-        <activity android:name=".ui.Activity.DetailActivity">
-        </activity>
-        <activity android:name=".ui.Activity.OrderCateActivity">
-        </activity>
-        <activity android:name=".ui.Activity.BookingActivity">
-        </activity>
-        <activity android:name=".ui.Activity.PhotoWallActivity">
-        </activity>
-        <activity android:name=".ui.Activity.PhotoAlbumActivity">
-        </activity>
-        <activity android:name=".ui.Activity.DetailWebActivity">
-        </activity>
-        <activity android:name=".ui.Activity.VideoActivity">
-        </activity>
-
-        <activity android:name=".ui.Activity.UserGuideActivity">
-        </activity>
-        <activity android:name=".ui.Activity.WebWebActivity">
-        </activity>
+        <activity android:name=".ui.Activity.MainActivity"></activity>
+        <activity android:name=".ui.Activity.SearchActivity"></activity>
+        <activity android:name=".ui.Activity.DetailActivity"></activity>
+        <activity android:name=".ui.Activity.OrderCateActivity"></activity>
+        <activity android:name=".ui.Activity.BookingActivity"></activity>
+        <activity android:name=".ui.Activity.PhotoWallActivity"></activity>
+        <activity android:name=".ui.Activity.PhotoAlbumActivity"></activity>
+        <activity android:name=".ui.Activity.DetailWebActivity"></activity>
+        <activity android:name=".ui.Activity.VideoActivity"></activity>
+        <activity android:name=".ui.Activity.UserGuideActivity"></activity>
+        <activity android:name=".ui.Activity.WebWebActivity"></activity>
         <!-- QQ客户端回调 2.6.3开始独立添加activity来处理QQ客户端的回调 -->
         <activity
             android:name="com.mob.tools.MobUIShell"
@@ -114,12 +102,12 @@
             如果此过滤器不设置，则分享结束以后不能得到正确的回调
             -->
             <intent-filter>
-                <data android:scheme="tencent100371282"/>
+                <data android:scheme="tencent100371282" />
 
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
         <activity
@@ -128,38 +116,36 @@
             android:exported="false"
             android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
-                <action android:name="cn.jpush.android.ui.PushActivity"/>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="com.app.CarCia"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.app.CarCia" />
             </intent-filter>
         </activity>
-
 
         <service
             android:name="cn.jpush.android.service.DownloadService"
             android:enabled="true"
-            android:exported="false">
-        </service>
+            android:exported="false"></service>
         <service
             android:name="cn.jpush.android.service.PushService"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
-                <action android:name="cn.jpush.android.intent.REGISTER"/>
-                <action android:name="cn.jpush.android.intent.REPORT"/>
-                <action android:name="cn.jpush.android.intent.PushService"/>
-                <action android:name="cn.jpush.android.intent.PUSH_TIME"/>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
             </intent-filter>
         </service>
-
         <service
             android:name="cn.jpush.android.service.DaemonService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="cn.jpush.android.intent.DaemonService"/>
-                <category android:name="com.app.CarCia"/>
+                <action android:name="cn.jpush.android.intent.DaemonService" />
+
+                <category android:name="com.app.CarCia" />
             </intent-filter>
         </service>
 
@@ -168,47 +154,45 @@
             android:enabled="true"
             android:exported="false">
             <intent-filter android:priority="1000">
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY"/>
-                <!--Required  显示通知栏 -->
-                <category android:name="com.app.CarCia"/>
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+                <!-- Required  显示通知栏 -->
+                <category android:name="com.app.CarCia" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.USER_PRESENT"/>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
             <!-- Optional -->
             <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED"/>
-                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
 
-                <data android:scheme="package"/>
+                <data android:scheme="package" />
             </intent-filter>
         </receiver>
         <receiver
             android:name=".broadcast.JpushReceiver"
             android:enabled="true">
             <intent-filter>
-                <action android:name="cn.jpush.android.intent.REGISTRATION"/>
-                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED"/>
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED"/>
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED"/>
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
 
-                <category android:name="com.app.CarCia"/>
+                <category android:name="com.app.CarCia" />
             </intent-filter>
         </receiver>
         <receiver
             android:name="cn.jpush.android.service.AlarmReceiver"
-            android:exported="false"/>
+            android:exported="false" />
 
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
-        <activity
-            android:name=".ui.Activity.VideoWebActivity">
-        </activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".ui.Activity.VideoWebActivity"></activity>
     </application>
 
 </manifest>

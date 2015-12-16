@@ -16,7 +16,7 @@
             android:layout_gravity="start|bottom"
             app:actualImageScaleType="centerCrop"
             app:placeholderImage="@mipmap/ic_add_default"
-            app:placeholderImageScaleType="centerCrop" />
+         />
 
         <ImageView
             android:id="@+id/cancel"

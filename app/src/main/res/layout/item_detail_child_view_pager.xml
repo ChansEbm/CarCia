@@ -12,6 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         app:actualImageScaleType="centerInside"
-        app:placeholderImageScaleType="centerCrop" />
+        app:placeholderImageScaleType="centerInside" />
 
 </LinearLayout>
