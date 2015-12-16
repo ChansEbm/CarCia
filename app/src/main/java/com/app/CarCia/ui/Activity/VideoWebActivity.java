@@ -1,14 +1,17 @@
 package com.app.CarCia.ui.Activity;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.app.CarCia.R;
 import com.app.CarCia.VideoWebLayout;
 import com.app.CarCia.base.BaseAty;
+import com.app.CarCia.tools.AppTools;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -24,6 +27,7 @@ public class VideoWebActivity extends BaseAty {
 
     @Override
     protected void initViews() {
+        defaultTitleBar(this).setTitle("实时工厂");
         webView = videoWebLayout.webView;
     }
 
@@ -34,16 +38,14 @@ public class VideoWebActivity extends BaseAty {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setMediaPlaybackRequiresUserGesture(true);
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-        webView.getSettings().setAllowFileAccess(true);
-        webView.getSettings().setDefaultTextEncodingName("UTF-8");
-        webView.getSettings().setLoadWithOverviewMode(true);
-        webView.getSettings().setUseWideViewPort(true);
-        webView.setVisibility(View.VISIBLE);
-        webView.getSettings().setPluginState(WebSettings.PluginState.ON);
-
-        String video = "\"<html><body>Youtube video .. <br> <iframe width=\"100%\" height=\"100%\" src=\"http://www.iermu.com/video/30e4242a5e47874fd7e7cf88dcd3be5b/3632437978?l=\" frameborder=\"0\" allowfullscreen></iframe></body></html>\";";
-        webView.loadData(video, "text/html", "utf-8");
-
+        webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                return false;
+            }
+        });
+        webView.loadUrl("http://st.zhundu.cc/users/garcianetcn/api/garcia_app/Login/factory");
     }
 
     @Override
@@ -53,7 +55,25 @@ public class VideoWebActivity extends BaseAty {
 
     @Override
     protected void onClick(int id, View view) {
+        if (id == R.id.nav) {
+            canGoBack();
+        }
+    }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            canGoBack();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    private void canGoBack() {
+        if (webView.canGoBack())
+            webView.goBack();
+        else
+            AppTools.removeSingleActivity(this);
     }
 
     @Override

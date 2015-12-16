@@ -35,7 +35,7 @@ public class WebWebActivity extends BaseAty {
                 return true;
             }
         });
-        webView.loadUrl("http://www.garcia.net.cn/");
+        webView.loadUrl("http://m.garcia.net.cn/");
     }
 
     @Override

@@ -1,5 +1,11 @@
 package com.app.CarCia.model;
 
+import android.content.Context;
+import android.view.View;
+
+import com.app.CarCia.R;
+import com.app.CarCia.tools.AppTools;
+
 import java.util.HashMap;
 
 import cn.sharesdk.framework.Platform;
@@ -23,6 +29,7 @@ public class ShareModel implements PlatformActionListener {
     private TencentWeibo.ShareParams weiboParams = new TencentWeibo.ShareParams();
     private ShortMessage.ShareParams shortMessageParams = new ShortMessage.ShareParams();
     private Platform platform;
+    private View snackView;
 
     public void shareToWechatFriends() {
         wechatFirendsParams.setTitle(ShareParams.title);
@@ -40,7 +47,7 @@ public class ShareModel implements PlatformActionListener {
         wechatMomentParams.setImageUrl(ShareParams.imageUrl);
         wechatMomentParams.setText(ShareParams.text);
         wechatMomentParams.setTitleUrl(ShareParams.titleUrl);
-        wechatMomentParams.setShareType(Platform.SHARE_IMAGE);
+        wechatMomentParams.setShareType(Platform.SHARE_WEBPAGE);
         platform = ShareSDK.getPlatform(WechatMoments.NAME);
         platform.setPlatformActionListener(this);
         platform.share(wechatMomentParams);
@@ -94,20 +101,27 @@ public class ShareModel implements PlatformActionListener {
         platform.share(shortMessageParams);
     }
 
-
     @Override
     public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
-
+        if (snackView != null) {
+            AppTools.showSnackBar(snackView, "分享成功");
+        }
     }
 
     @Override
     public void onError(Platform platform, int i, Throwable throwable) {
-
+        throwable.printStackTrace();
     }
 
     @Override
     public void onCancel(Platform platform, int i) {
+        if (snackView != null) {
+            AppTools.showSnackBar(snackView, "分享失败");
+        }
+    }
 
+    public void setSnackView(View snackView) {
+        this.snackView = snackView;
     }
 
     public static class ShareParams {

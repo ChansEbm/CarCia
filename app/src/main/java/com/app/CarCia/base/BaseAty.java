@@ -22,6 +22,8 @@ import com.app.CarCia.tools.TitleBarTools;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * Created by ChanZeeBm on 2015/9/7.
  */
@@ -132,6 +134,18 @@ public abstract class BaseAty<T> extends AppCompatActivity implements View.OnCli
     @Override
     public void onBinderItemLongClick(View view, int pos) {
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        JPushInterface.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        JPushInterface.onPause(this);
     }
 
     @Override

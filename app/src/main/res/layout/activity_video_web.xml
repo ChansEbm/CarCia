@@ -3,17 +3,26 @@
 
     <data class=".VideoWebLayout"/>
 
-    <RelativeLayout
+    <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/theme_primary">
 
-        tools:context="com.app.CarCia.ui.Activity.VideoWebActivity">
-
-        <WebView
-            android:id="@+id/webView"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </RelativeLayout>
+            android:layout_height="match_parent"
+            android:background="@color/color_white"
+            android:orientation="vertical"
+            tools:context="com.app.CarCia.ui.Activity.VideoWebActivity">
+
+            <include layout="@layout/title_bar"/>
+
+            <WebView
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+    </FrameLayout>
 </layout>

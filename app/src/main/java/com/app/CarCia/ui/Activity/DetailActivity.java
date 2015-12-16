@@ -47,7 +47,7 @@ public class DetailActivity extends BaseAty<ItemProductBean.ListEntity>
     private List<View> simpleDraweeViews = new ArrayList<>();
     private int currentPos = -1;
     private ChildViewPagerAdapter childViewPagerAdapter;
-    private ShareModel shareModel = new ShareModel();
+    private ShareModel shareModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +66,7 @@ public class DetailActivity extends BaseAty<ItemProductBean.ListEntity>
 
     @Override
     protected void initViews() {
+        shareModel = new ShareModel();
         String title = getIntent().getStringExtra("title");
         defaultTitleBar(this).setTitle(title).setOnMenuItemClickListener(this);
         vhdChild = detailLayout.vhdChild;
@@ -162,6 +163,7 @@ public class DetailActivity extends BaseAty<ItemProductBean.ListEntity>
     @Override
     public void onPageSelected(int position) {
         titleBarTools.setTitle(list.get(position).getTitle());
+        currentPos = position;
         List<ItemProductBean.ListEntity.LinkProductEntity> childList = list.get(position)
                 .getLinkProduct();
         if (!childList.isEmpty()) {
@@ -191,8 +193,8 @@ public class DetailActivity extends BaseAty<ItemProductBean.ListEntity>
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         if (item.getItemId() == R.id.menu_share) {
-//            ShareDialog shareDialog = new ShareDialog(this);
-//            shareDialog.setOnShareItemClickListener(this);
+            ShareDialog shareDialog = new ShareDialog(this);
+            shareDialog.setOnShareItemClickListener(this);
 //            shareDialog.show();
             return true;
         }
@@ -201,11 +203,12 @@ public class DetailActivity extends BaseAty<ItemProductBean.ListEntity>
 
     @Override
     public void onShareItemClick(SharePlatform sharePlatform) {
-        ShareModel.ShareParams.imageUrl = "http://e.hiphotos.baidu" +
-                ".com/zhidao/pic/item/fcfaaf51f3deb48fa05af774f31f3a292df5786c.jpg";
-        ShareModel.ShareParams.text = "text";
-        ShareModel.ShareParams.title = "title";
-        ShareModel.ShareParams.titleUrl = "www.baidu.com";
+        ShareModel.ShareParams.imageUrl = list.get(currentPos).getImage();
+        ShareModel.ShareParams.text = "加西亚瓷砖介绍加西亚瓷砖介绍加西亚瓷砖介绍";
+        ShareModel.ShareParams.title = "加西亚瓷砖";
+        ShareModel.ShareParams.titleUrl = list.get(currentPos).getLinkProduct().get(0)
+                .getDetailUrl();
+        shareModel.setSnackView(detailLayout.getRoot());
         switch (sharePlatform) {
             case Q_ZONE:
                 shareModel.shareToQZone();

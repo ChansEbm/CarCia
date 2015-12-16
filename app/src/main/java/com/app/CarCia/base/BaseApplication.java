@@ -7,12 +7,17 @@ import android.support.multidex.MultiDex;
 
 import com.app.CarCia.tools.AppTools;
 import com.app.CarCia.tools.FileSaveTools;
+import com.app.CarCia.tools.LogTools;
 import com.app.CarCia.tools.SharedPreferencesTools;
 import com.baidu.mapapi.SDKInitializer;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.orhanobut.logger.LogLevel;
 import com.orhanobut.logger.Logger;
 
+import java.util.Set;
+
+import cn.jpush.android.api.JPushInterface;
+import cn.jpush.android.api.TagAliasCallback;
 import cn.sharesdk.framework.ShareSDK;
 
 
@@ -30,9 +35,15 @@ public class BaseApplication extends Application {
         MultiDex.install(this);
         FileSaveTools.getInstance().init(this);
         ShareSDK.initSDK(this);
+        JPushInterface.init(this);
+        JPushInterface.setAlias(this, "chan", new TagAliasCallback() {
+            @Override
+            public void gotResult(int i, String s, Set<String> set) {
+                LogTools.v(s);
+            }
+        });
         Logger.init("digital").setMethodCount(3).hideThreadInfo().setLogLevel
                 (LogLevel.FULL);
-
     }
 
     public BaseApplication() {

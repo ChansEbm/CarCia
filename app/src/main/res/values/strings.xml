@@ -1,4 +1,6 @@
-<resources>
+<resources
+
+    tools:ignore="MissingTranslation" xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">加西亚</string>
 
     <!-- TODO: Remove or change this placeholder text -->

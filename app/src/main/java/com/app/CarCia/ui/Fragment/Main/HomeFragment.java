@@ -3,6 +3,7 @@ package com.app.CarCia.ui.Fragment.Main;
 import android.databinding.ViewDataBinding;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,12 +23,16 @@ import com.app.CarCia.impl.OnPagerClickListener;
 import com.app.CarCia.model.NetworkModel;
 import com.app.CarCia.tools.AppTools;
 import com.app.CarCia.tools.WrappableGridLayoutManager;
+import com.app.CarCia.ui.Activity.VideoWebActivity;
 import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends BaseFgm implements OnPagerClickListener {
+import cn.jpush.android.api.InstrumentedActivity;
+
+public class HomeFragment extends BaseFgm implements OnPagerClickListener, Toolbar
+        .OnMenuItemClickListener {
     private FragmentHomeBinding fragmentHomeBinding;
     private MultiAdapter<HomeBean.ListEntity> topAdapter;//顶部Adapter
     private CommonBinderAdapter<HomeBean.ListEntity> middleAdapter;//中部Adapter
@@ -41,11 +46,7 @@ public class HomeFragment extends BaseFgm implements OnPagerClickListener {
         super.onActivityCreated(savedInstanceState);
         fragmentHomeBinding.include.toolBar.inflateMenu(R.menu.menu_online);
         fragmentHomeBinding.include.toolBar.setNavigationIcon(R.mipmap.logo_carcia);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
+        fragmentHomeBinding.include.toolBar.setOnMenuItemClickListener(this);
     }
 
     @Override
@@ -194,5 +195,13 @@ public class HomeFragment extends BaseFgm implements OnPagerClickListener {
         } else if (viewGroup.getId() == R.id.bottomViewPager) {
             AppTools.sendBroadcast(null, AppKeyMap.ACTION_INTO_BRAND);
         }
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        if (item.getItemId() == R.id.online) {
+            start(VideoWebActivity.class);
+        }
+        return true;
     }
 }

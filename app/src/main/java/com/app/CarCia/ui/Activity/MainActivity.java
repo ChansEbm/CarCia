@@ -40,7 +40,6 @@ public class MainActivity extends BaseAty implements RadioGroup.OnCheckedChangeL
         super.onCreate(savedInstanceState);
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         mainBinding = (MainBinding) viewDataBinding;
-        start(VideoWebActivity.class);
     }
 
     @Override

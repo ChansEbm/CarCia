@@ -64,12 +64,12 @@ public class VipFragment extends BaseFgm {
                 @Override
                 public void run() {
                     if (id != null) {
-                        Intent intent = new Intent().putExtra("auth", id).setClass(getActivity(),
-                                BookingActivity.class);
-                        startActivity(intent);
-                    }
-                }
-            });
+                Intent intent = new Intent().putExtra("auth", id).setClass(getActivity(),
+                        BookingActivity.class);
+                startActivity(intent);
+            }
+        }
+    });
         }
     }
 
