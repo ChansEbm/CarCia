@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by Administrator on 12/3/2015.
+ * Created by ChanZeeBm on 12/3/2015.
  */
 public class OkHttpBuilder {
 
@@ -162,6 +162,7 @@ public class OkHttpBuilder {
         public void enqueue(@NonNull FragmentActivity fragmentActivity, OkHttpResponseListener
                 okHttpResponseListener) {
             AppTools.showLoadingDialog(fragmentActivity);
+            LogTools.i(AppTools.loadingDialog.isShowing());
             if (TextUtils.isEmpty(fullUrl) || requestBody == null || entityClass == null) {
                 throw new NullPointerException("url or map is unavailable, or not invoke entity");
             }

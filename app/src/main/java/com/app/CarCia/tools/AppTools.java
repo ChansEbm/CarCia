@@ -343,11 +343,14 @@ public class AppTools {
      * @param fragmentActivity
      */
     public static LoadingDialog loadingDialog;
+    private static FragmentActivity loadingActivity;
 
     public static void showLoadingDialog(FragmentActivity fragmentActivity) {
-        if (loadingDialog == null)
+        if (fragmentActivity != loadingActivity)
             loadingDialog = new LoadingDialog(fragmentActivity);
-        loadingDialog.show();
+        if (!loadingDialog.isShowing())
+            loadingDialog.show();
+        loadingActivity = fragmentActivity;
     }
 
     public static void dismissLoadingDialog() {

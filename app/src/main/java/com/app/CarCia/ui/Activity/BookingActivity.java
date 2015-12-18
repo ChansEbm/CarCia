@@ -1,6 +1,7 @@
 package com.app.CarCia.ui.Activity;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -81,6 +82,13 @@ public class BookingActivity extends BaseAty implements OnRecordListener,
         contentEdt = bookingLayout.edtContent;
 
         takePhotoPopupWindow = new TakePhotoPopupWindow(this);
+        try {
+            String[] s = getPackageManager().getPackageInfo(getPackageName(), PackageManager
+                    .GET_PERMISSIONS)
+                    .requestedPermissions;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

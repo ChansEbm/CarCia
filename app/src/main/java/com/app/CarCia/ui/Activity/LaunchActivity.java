@@ -3,7 +3,6 @@ package com.app.CarCia.ui.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -12,22 +11,34 @@ import com.app.CarCia.adapters.LaunchAdapter;
 import com.app.CarCia.base.BaseAty;
 import com.app.CarCia.databinding.LaunchLayout;
 import com.app.CarCia.tools.AppTools;
+import com.app.CarCia.tools.SharedPreferencesTools;
 
 public class LaunchActivity extends BaseAty implements ViewPager.OnPageChangeListener {
     private LaunchLayout launchLayout;
     private ViewPager viewPager;
     private boolean isScrolled = true;
+    private boolean isFirst = true;
+    private SharedPreferencesTools sharedPreferencesTools;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager
+                .LayoutParams.FLAG_FULLSCREEN);//全屏
         super.onCreate(savedInstanceState);
         launchLayout = (LaunchLayout) viewDataBinding;
+
+        sharedPreferencesTools = new SharedPreferencesTools(this);
+        isFirst = sharedPreferencesTools.getBoolean("isFirstRunApplication", isFirst);
+        if (!isFirst) {
+            startMainActivity();
+            return;
+        }
     }
 
     @Override
     protected void initViews() {
         viewPager = launchLayout.viewPager;
+
     }
 
     @Override
@@ -66,15 +77,22 @@ public class LaunchActivity extends BaseAty implements ViewPager.OnPageChangeLis
                 isScrolled = true;
                 break;
             case ViewPager.SCROLL_STATE_IDLE:
-                if (viewPager.getCurrentItem() == viewPager.getAdapter().getCount() - 1 && !isScrolled) {
-                    Intent intent=new Intent();
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    intent.setClass(this,MainActivity.class);
-                    startActivity(intent);
-                    AppTools.removeSingleActivity(this);
+                if (viewPager.getCurrentItem() == viewPager.getAdapter().getCount() - 1 &&
+                        !isScrolled) {
+                    isFirst = false;
+                    sharedPreferencesTools.putBoolean("isFirstRunApplication", isFirst);
+                    startMainActivity();
                 }
                 isScrolled = true;
                 break;
         }
+    }
+
+    private void startMainActivity() {
+        Intent intent = new Intent();
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setClass(this, MainActivity.class);
+        startActivity(intent);
+        this.finish();
     }
 }

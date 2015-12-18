@@ -13,6 +13,7 @@ import cn.jpush.android.api.JPushInterface;
  * Created by ChanZeeBm on 2015/12/16.
  */
 public class JpushReceiver extends BroadcastReceiver {
+
     @Override
     public void onReceive(Context context, Intent intent) {
         Bundle bundle = intent.getExtras();

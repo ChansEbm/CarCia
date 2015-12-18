@@ -1,6 +1,5 @@
 package com.app.CarCia.model;
 
-import android.content.Context;
 import android.view.View;
 
 import com.app.CarCia.R;
@@ -35,8 +34,8 @@ public class ShareModel implements PlatformActionListener {
         wechatFirendsParams.setTitle(ShareParams.title);
         wechatFirendsParams.setImageUrl(ShareParams.imageUrl);
         wechatFirendsParams.setText(ShareParams.text);
-        wechatFirendsParams.setTitleUrl(ShareParams.titleUrl);
-        wechatFirendsParams.setShareType(Platform.SHARE_IMAGE);
+        wechatFirendsParams.setUrl(ShareParams.titleUrl);
+        wechatFirendsParams.setShareType(Platform.SHARE_WEBPAGE);
         platform = ShareSDK.getPlatform(Wechat.NAME);
         platform.setPlatformActionListener(this);
         platform.share(wechatFirendsParams);
@@ -46,7 +45,7 @@ public class ShareModel implements PlatformActionListener {
         wechatMomentParams.setTitle(ShareParams.title);
         wechatMomentParams.setImageUrl(ShareParams.imageUrl);
         wechatMomentParams.setText(ShareParams.text);
-        wechatMomentParams.setTitleUrl(ShareParams.titleUrl);
+        wechatMomentParams.setUrl(ShareParams.titleUrl);
         wechatMomentParams.setShareType(Platform.SHARE_WEBPAGE);
         platform = ShareSDK.getPlatform(WechatMoments.NAME);
         platform.setPlatformActionListener(this);
@@ -116,7 +115,7 @@ public class ShareModel implements PlatformActionListener {
     @Override
     public void onCancel(Platform platform, int i) {
         if (snackView != null) {
-            AppTools.showSnackBar(snackView, "分享失败");
+            AppTools.showSnackBar(snackView, "取消分享");
         }
     }
 
@@ -130,6 +129,6 @@ public class ShareModel implements PlatformActionListener {
         public static String imageUrl = "";
         public static String titleUrl = "";
         private static String site = "加西亚";
-        private static String siteUrl = "http://www.garcia.net.cn/";
+        private static String siteUrl = "http://m.garcia.net.cn/";
     }
 }

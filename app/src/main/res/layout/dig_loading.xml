@@ -12,6 +12,5 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         app:indicator="BallTrianglePath"
-        app:indicator_color="@color/color_org_light"
-        />
+        app:indicator_color="@color/color_org_light"/>
 </LinearLayout>

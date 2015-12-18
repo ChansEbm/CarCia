@@ -20,7 +20,7 @@ public class BitmapCompressTool {
         if (bitmapWidth > width || bitmapHeight > height) {
             int widthRadio = Math.round(bitmapWidth / width);
             int heightRadio = Math.round(bitmapHeight / height);
-            simpleSize = widthRadio > heightRadio ? widthRadio : heightRadio;
+            simpleSize = heightRadio < widthRadio ? heightRadio : widthRadio;
         }
         return simpleSize;
     }
@@ -37,8 +37,11 @@ public class BitmapCompressTool {
         FileOutputStream fileOutputStream = null;
         try {
             fileOutputStream = new FileOutputStream(new File(path));
-            bitmap.compress(Bitmap.CompressFormat.PNG, 80, fileOutputStream);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 50, fileOutputStream);
+            fileOutputStream.flush();
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         } finally {
             if (fileOutputStream != null) {

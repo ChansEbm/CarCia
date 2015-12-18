@@ -67,8 +67,8 @@
         SortId="1"/>
 
     <TencentWeibo
-        AppKey="801307650"
-        AppSecret="ae36f4ee3946e1cbb98d6965b0b2ff5c"
+        AppKey="1105026028"
+        AppSecret="nV3q7xKnHBfkHIz6"
         Enable="true"
         Id="2"
         RedirectUri="http://sharesdk.cn"
@@ -76,8 +76,8 @@
 
     <!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->
     <QZone
-        AppId="100371282"
-        AppKey="aed9b0303e3ed1e27bae87c33761161d"
+        AppId="1105026028"
+        AppKey="nV3q7xKnHBfkHIz6"
         Enable="true"
         Id="3"
         ShareByAppClient="false"
@@ -98,7 +98,7 @@
     <Wechat
         AppId="wx3ba9b243cd1a1c4e"
         AppSecret="8338764f782fcc4c0093624ad32a0b50"
-        BypassApproval="true"
+        BypassApproval="false"
         Enable="true"
         Id="4"
         SortId="4"/>
@@ -106,15 +106,15 @@
     <WechatMoments
         AppId="wx3ba9b243cd1a1c4e"
         AppSecret="8338764f782fcc4c0093624ad32a0b50"
-        BypassApproval="true"
+        BypassApproval="false"
         Enable="true"
         Id="5"
         SortId="5"/>
 
     <!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->
     <QQ
-        AppId="100371282"
-        AppKey="aed9b0303e3ed1e27bae87c33761161d"
+        AppId="1105026028"
+        AppKey="nV3q7xKnHBfkHIz6"
         Enable="true"
         Id="7"
         ShareByAppClient="true"

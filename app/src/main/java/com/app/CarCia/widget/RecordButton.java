@@ -10,6 +10,7 @@ import com.app.CarCia.R;
 import com.app.CarCia.dialog.RecordDialog;
 import com.app.CarCia.impl.OnRecordListener;
 import com.app.CarCia.tools.AppTools;
+import com.app.CarCia.tools.LogTools;
 import com.czt.mp3recorder.MP3Recorder;
 
 import java.io.File;
@@ -52,6 +53,7 @@ public class RecordButton extends Button {
             case MotionEvent.ACTION_UP:
                 currentMillions = System.currentTimeMillis();
                 if (currentMillions - downMillions < 800) {
+                    setEnabled(false);
                     recordDialog.dismiss();
                     if (recorder.isRecording()) {
                         recorder.stop();
@@ -59,6 +61,7 @@ public class RecordButton extends Button {
                     if (recordFile != null || recordFile.exists()) {
                         recordFile.delete();
                     }
+                    setEnabled(true);
                     return false;
                 }
                 recorder.stop();
@@ -67,6 +70,17 @@ public class RecordButton extends Button {
                 }
                 recordDialog.dismiss();
                 break;
+            case MotionEvent.ACTION_CANCEL:
+                LogTools.i("cancel");
+                if (recordDialog.isShowing())
+                    recordDialog.dismiss();
+                if (recordFile != null) {
+                    recordFile.delete();
+                }
+                if (recorder.isRecording()) {
+                    recorder.stop();
+                }
+                return false;
         }
         if (onRecordListener != null)
             onRecordListener.onRecording(recorder.isRecording());

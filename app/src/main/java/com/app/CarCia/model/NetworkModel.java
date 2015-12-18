@@ -17,9 +17,9 @@ import com.app.CarCia.entity.HomeBean;
 import com.app.CarCia.entity.ItemProductBean;
 import com.app.CarCia.entity.OrderCateBean;
 import com.app.CarCia.entity.UploadBean;
+import com.app.CarCia.impl.OkHttpResponseListener;
 import com.app.CarCia.impl.OnPagerClickListener;
 import com.app.CarCia.tools.AppTools;
-import com.app.CarCia.tools.LogTools;
 import com.app.CarCia.tools.OkHttpBuilder;
 
 import java.util.HashMap;
@@ -59,7 +59,9 @@ public class NetworkModel {
                                 viewPager.setAdapter(topAdvertisementAdapter);
                                 topAdvertisementAdapter.setOnPagerClickListener
                                         (onPagerClickListener);
+                                dismissLoadingDialog();
                             }
+
                         });
     }
 
@@ -84,6 +86,7 @@ public class NetworkModel {
                                 viewPager.setAdapter(bottomAdvertisementAdapter);
                                 bottomAdvertisementAdapter.setOnPagerClickListener
                                         (onPagerClickListener);
+                                dismissLoadingDialog();
                             }
                         });
     }
@@ -109,6 +112,7 @@ public class NetworkModel {
                         list.addAll(homeBean.getList());
                         if (adapter != null)
                             adapter.notifyDataSetChanged();
+                        dismissLoadingDialog();
                     }
                 });
     }
@@ -133,6 +137,7 @@ public class NetworkModel {
                             adapter.getList().clear();
                             adapter.getList().addAll(itemProductBean.getList());
                             adapter.notifyDataSetChanged();
+                            dismissLoadingDialog();
                         }
                     }
                 });
@@ -144,14 +149,12 @@ public class NetworkModel {
                 (fragmentActivity, new JsonObjectListener<OrderCateBean>() {
                     @Override
                     public void onJsonObjectResponse(OrderCateBean orderCateBean) {
-                        LogTools.i("callback");
                         if (adapter != null) {
-                            LogTools.e("not null");
                             adapter.getList().clear();
                             adapter.getList().addAll(orderCateBean.getList());
                             adapter.notifyDataSetChanged();
+                            dismissLoadingDialog();
                         } else {
-                            LogTools.i("null");
                         }
                     }
                 });
@@ -162,7 +165,7 @@ public class NetworkModel {
                                    String... fileKey) {
         new OkHttpBuilder.POST().entityClass(UploadBean.class).params(params, files, fileKey).url1
                 ("saveOrder")
-                .enqueue(fragmentActivity, new JsonObjectListener<UploadBean>() {
+                .enqueue(fragmentActivity, new OkHttpResponseListener<UploadBean>() {
 
                     @Override
                     public void onJsonObjectResponse(UploadBean uploadBean) {
@@ -172,6 +175,17 @@ public class NetworkModel {
                         } else {
                             Toast.makeText(fragmentActivity, "上传失败,请检查", Toast.LENGTH_LONG).show();
                         }
+                    }
+
+                    @Override
+                    public void onJsonArrayResponse(List<UploadBean> t) {
+
+                    }
+
+                    @Override
+                    public void onError(String error) {
+                        Toast.makeText(fragmentActivity, "由于网络原因,上传失败!", Toast
+                                .LENGTH_LONG).show();
                     }
                 });
     }
@@ -186,6 +200,7 @@ public class NetworkModel {
             public void onJsonObjectResponse(ItemProductBean listEntity) {
                 if (listEntity.getList().isEmpty()) {
                     AppTools.showSnackBar(editText, "暂无数据");
+                    dismissLoadingDialog();
                     return;
                 }
                 if (adapter != null) {
@@ -193,6 +208,7 @@ public class NetworkModel {
                     adapter.getList().addAll(listEntity.getList());
                     adapter.notifyDataSetChanged();
                 }
+                dismissLoadingDialog();
             }
         });
     }
@@ -208,5 +224,9 @@ public class NetworkModel {
                 .color_snack_bar_background));
         sView.setLayoutParams(params);
         snackbar.show();
+    }
+
+    private void dismissLoadingDialog() {
+        AppTools.dismissLoadingDialog();
     }
 }

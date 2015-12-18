@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.app.CarCia.AppKeyMap;
 import com.app.CarCia.adapters.CommonBinderAdapter;
 import com.app.CarCia.adapters.MultiAdapter;
 import com.app.CarCia.impl.BinderOnItemClickListener;
@@ -32,7 +33,6 @@ public abstract class BaseAty<T> extends AppCompatActivity implements View.OnCli
 
     private BaseApplication baseApplication;
     protected CommonBinderAdapter<T> commonBinderAdapter;
-    protected MultiAdapter<T> multiAdapter;
     protected RecyclerView.LayoutManager layoutManager;
     protected List<T> list = new ArrayList<>();
     protected TitleBarTools titleBarTools;
@@ -151,7 +151,6 @@ public abstract class BaseAty<T> extends AppCompatActivity implements View.OnCli
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        AppTools.loadingDialog = null;
     }
 }
 

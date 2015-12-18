@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.app.CarCia.AppKeyMap;
@@ -36,12 +37,14 @@ public class BrandChildFragment extends BaseFgm {
     protected void initViews() {
         brandChildLayout = (BrandChildLayout) viewDataBinding;
         webView = brandChildLayout.webView;
-    
+
     }
 
     @Override
     protected void initEvents() {
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setCacheMode
+                (WebSettings.LOAD_NO_CACHE);
         webView.loadUrl("http://diy.appbaba.com/garcia/index.php?m=content&c=app&a=brand");
     }
 

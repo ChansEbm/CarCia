@@ -4,6 +4,7 @@ package com.app.CarCia.ui.Fragment.Brand;
 import android.app.Fragment;
 import android.view.View;
 import android.webkit.JavascriptInterface;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -29,6 +30,7 @@ public class SpecialFragment extends BaseFgm {
     @Override
     protected void initEvents() {
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {

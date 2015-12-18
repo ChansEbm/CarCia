@@ -187,7 +187,7 @@ public class DetailActivity extends BaseAty<ItemProductBean.ListEntity>
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_share, menu);
-        return true;
+        return false;
     }
 
     @Override
@@ -195,7 +195,7 @@ public class DetailActivity extends BaseAty<ItemProductBean.ListEntity>
         if (item.getItemId() == R.id.menu_share) {
             ShareDialog shareDialog = new ShareDialog(this);
             shareDialog.setOnShareItemClickListener(this);
-//            shareDialog.show();
+            shareDialog.show();
             return true;
         }
         return false;

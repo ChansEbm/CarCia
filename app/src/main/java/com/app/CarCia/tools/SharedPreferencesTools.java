@@ -20,7 +20,18 @@ public class SharedPreferencesTools {
 
     public SharedPreferencesTools putString(String key, String value) {
         editor.putString(key, value);
+        commit();
         return this;
+    }
+
+    public SharedPreferencesTools putBoolean(String key, boolean value) {
+        editor.putBoolean(key, value);
+        commit();
+        return this;
+    }
+
+    public boolean getBoolean(String key, boolean defaultValue) {
+        return sharedPreferences.getBoolean(key, defaultValue);
     }
 
     public String getString(String key) {
@@ -29,6 +40,7 @@ public class SharedPreferencesTools {
 
     public SharedPreferencesTools putInt(String key, int value) {
         editor.putInt(key, value);
+        commit();
         return this;
     }
 
@@ -38,6 +50,7 @@ public class SharedPreferencesTools {
 
     public SharedPreferencesTools putSet(String key, Set<String> values) {
         editor.putStringSet(key, values);
+        commit();
         return this;
     }
 

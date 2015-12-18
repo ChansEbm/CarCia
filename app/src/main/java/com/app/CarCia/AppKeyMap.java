@@ -39,4 +39,6 @@ public class AppKeyMap {
     public final static String CONTENT_MP3 = "audio/mp3";
     public final static String CONTENT_OCT = "application/octet-stream";
 
+    public static String UserId = "";
+
 }

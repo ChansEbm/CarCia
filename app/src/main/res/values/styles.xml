@@ -12,6 +12,13 @@
         <item name="android:fitsSystemWindows">true</item>
     </style>
 
+    <style name="LaunchStyle" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@mipmap/avd1</item>
+    </style>
+
+    <style name="MainStyle" parent="BaseAppTheme">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
 
     <!--TextView默认属性-->
     <style name="textStyle" parent="android:Widget.TextView">

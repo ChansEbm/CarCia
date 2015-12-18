@@ -24,7 +24,7 @@ import cn.sharesdk.framework.ShareSDK;
 /**
  * Created by ChanZeeBm on 2015/9/7.
  */
-public class BaseApplication extends Application {
+public class BaseApplication extends Application implements TagAliasCallback {
 
     @Override
     public void onCreate() {
@@ -36,12 +36,7 @@ public class BaseApplication extends Application {
         FileSaveTools.getInstance().init(this);
         ShareSDK.initSDK(this);
         JPushInterface.init(this);
-        JPushInterface.setAlias(this, "chan", new TagAliasCallback() {
-            @Override
-            public void gotResult(int i, String s, Set<String> set) {
-                LogTools.v(s);
-            }
-        });
+//        JPushInterface.setAlias(this, "zee", this);
         Logger.init("digital").setMethodCount(3).hideThreadInfo().setLogLevel
                 (LogLevel.FULL);
     }
@@ -59,4 +54,8 @@ public class BaseApplication extends Application {
         super.onConfigurationChanged(newConfig);
     }
 
+    @Override
+    public void gotResult(int i, String s, Set<String> set) {
+
+    }
 }

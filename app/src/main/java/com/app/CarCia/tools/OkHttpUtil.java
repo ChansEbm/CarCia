@@ -29,6 +29,7 @@ public class OkHttpUtil<T> implements Callback {
 
     private final static int OBJECT = 0x001;
     private final static int ARRAY = 0x002;
+    private final static int ERROR = 0x003;
 
     static {
         //初始化超时时间 15s
@@ -52,7 +53,7 @@ public class OkHttpUtil<T> implements Callback {
         AppTools.dismissLoadingDialog();
         e.printStackTrace();
         if (okHttpResponseListener != null) {
-            okHttpResponseListener.onError("ErrorCode:" + request.toString());
+            sendErrorMessage(request.toString());
         }
     }
 
@@ -72,12 +73,12 @@ public class OkHttpUtil<T> implements Callback {
                     }
                 }
             }
-            LogTools.e(jsonStr);
+            LogTools.w(jsonStr);
             LogTools.json(json != null ? json : jsonStr);
             parseJson(json != null ? json : jsonStr);
         } else {
             if (okHttpResponseListener != null) {
-                okHttpResponseListener.onError(response.toString());
+                sendErrorMessage(response.toString());
             }
         }
     }
@@ -146,9 +147,19 @@ public class OkHttpUtil<T> implements Callback {
                     List<T> list = (List<T>) msg.obj;
                     okHttpResponseListener.onJsonArrayResponse(list);
                     break;
+                case ERROR:
+                    okHttpResponseListener.onError((String) msg.obj);
+                    break;
             }
         }
     };
+
+    private void sendErrorMessage(String error) {
+        Message message = Message.obtain();
+        message.obj = "ErrorCode:" + error;
+        message.what = ERROR;
+        handler.sendMessage(message);
+    }
 
     public void setOkHttpResponseListener(OkHttpResponseListener<T> okHttpResponseListener) {
         this.okHttpResponseListener = okHttpResponseListener;

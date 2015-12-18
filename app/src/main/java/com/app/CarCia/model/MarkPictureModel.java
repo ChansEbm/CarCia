@@ -19,7 +19,6 @@ import com.app.CarCia.impl.OnAddPictureDoneListener;
 import com.app.CarCia.impl.WidgetPerform;
 import com.app.CarCia.tools.BitmapCompressTool;
 import com.app.CarCia.tools.FileSaveTools;
-import com.app.CarCia.tools.LogTools;
 import com.app.CarCia.tools.ObjectAnimatorTools;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.nineoldandroids.view.ViewPropertyAnimator;
@@ -41,7 +40,7 @@ public class MarkPictureModel implements View.OnClickListener {
     public void addSinglePictureInLinearLayout(Context context, LinearLayout linearLayout,
                                                @NonNull String
                                                        filePath) {
-        if (TextUtils.equals(filePath, "")) {//如果路径为默认值,则返回不执行任何操作
+        if (TextUtils.isEmpty(filePath)) {//如果路径为默认值,则返回不执行任何操作
             return;
         }
         String newPath = getNewFilePath(filePath);//检查图片是否在APP指定图片缓存内
@@ -52,11 +51,10 @@ public class MarkPictureModel implements View.OnClickListener {
         SimpleDraweeView simpleDraweeView = pictureItem.simpleDraweeView;
         pictureItem.cancel.setOnClickListener(this);
 
-        BitmapCompressTool.getRadioBitmap(displayPath, 300, 300);
+        BitmapCompressTool.getRadioBitmap(displayPath, 500, 500);
         //压缩图片宽高为300*300
-        simpleDraweeView.setTag(displayPath);//设置标识为图片路径
-        simpleDraweeView.setImageURI(Uri.parse("file://" + displayPath))
-        ;//加载图片并显示
+        simpleDraweeView.setTag(filePath);//设置标识为图片路径
+        simpleDraweeView.setImageURI(Uri.parse("file://" + displayPath));//加载图片并显示
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout
                 .LayoutParams.WRAP_CONTENT,
