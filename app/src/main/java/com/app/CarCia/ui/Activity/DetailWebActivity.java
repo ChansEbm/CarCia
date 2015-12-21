@@ -1,6 +1,7 @@
 package com.app.CarCia.ui.Activity;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebView;
 
@@ -42,5 +43,15 @@ public class DetailWebActivity extends BaseAty {
         if (id == R.id.nav) {
             AppTools.removeSingleActivity(this);
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (webView.canGoBack())
+                webView.goBack();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

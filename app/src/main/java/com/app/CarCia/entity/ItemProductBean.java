@@ -127,6 +127,10 @@ public class ItemProductBean {
         private String CatPos;
         private String Thumb;
         private String Image;
+        private String H1;
+        private String Description;
+        private String ShareUrl;
+
         /**
          * ProID : 687
          * ProNo : 1CG803007F
@@ -138,6 +142,30 @@ public class ItemProductBean {
          */
 
         private java.util.List<LinkProductEntity> LinkProduct;
+
+        public String getH1() {
+            return H1;
+        }
+
+        public void setH1(String h1) {
+            H1 = h1;
+        }
+
+        public String getDescription() {
+            return Description;
+        }
+
+        public void setDescription(String description) {
+            Description = description;
+        }
+
+        public String getShareUrl() {
+            return ShareUrl;
+        }
+
+        public void setShareUrl(String shareUrl) {
+            ShareUrl = shareUrl;
+        }
 
         public void setID(String ID) {
             this.ID = ID;

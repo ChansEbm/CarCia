@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.app.CarCia.AppKeyMap;
@@ -88,6 +89,16 @@ public class BrandFragment extends BaseFgm implements UpdateUIListener {
 
     }
 
+    public boolean onKeyDown(int keyCode) {
+        Fragment fragment = adapter.getItem(viewPager.getCurrentItem());
+        if (fragment instanceof BrandChildFragment) {
+            return ((BrandChildFragment) fragment).onKeyDown(keyCode);
+        } else if (fragment instanceof SpecialFragment) {
+            return ((SpecialFragment) fragment).onKeyDown(keyCode);
+        }
+        return false;
+    }
+
     @Override
     protected int getContentView() {
         return R.layout.fragment_brand;
@@ -107,6 +118,7 @@ public class BrandFragment extends BaseFgm implements UpdateUIListener {
     public void uiUpData(Intent intent) {
         viewPager.setCurrentItem(0, true);
     }
+
 
     class FragmentAdapter extends FragmentPagerAdapter {
 

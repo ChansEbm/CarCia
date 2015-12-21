@@ -7,7 +7,6 @@ import android.support.multidex.MultiDex;
 
 import com.app.CarCia.tools.AppTools;
 import com.app.CarCia.tools.FileSaveTools;
-import com.app.CarCia.tools.LogTools;
 import com.app.CarCia.tools.SharedPreferencesTools;
 import com.baidu.mapapi.SDKInitializer;
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -36,7 +35,7 @@ public class BaseApplication extends Application implements TagAliasCallback {
         FileSaveTools.getInstance().init(this);
         ShareSDK.initSDK(this);
         JPushInterface.init(this);
-//        JPushInterface.setAlias(this, "zee", this);
+        JPushInterface.setAlias(this, "ibm", this);
         Logger.init("digital").setMethodCount(3).hideThreadInfo().setLogLevel
                 (LogLevel.FULL);
     }

@@ -2,6 +2,7 @@ package com.app.CarCia.ui.Fragment.Brand;
 
 
 import android.app.Fragment;
+import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
@@ -53,10 +54,26 @@ public class SpecialFragment extends BaseFgm {
 
     }
 
+
+    /**
+     * @param keyCode
+     * @return
+     */
+    public boolean onKeyDown(int keyCode) {
+        if (keyCode == KeyEvent.KEYCODE_BACK)
+            if (webView.canGoBack()) {
+                webView.goBack();
+                return true;
+            }
+        return false;
+    }
+
+
     @Override
     protected void onClick(int id, View view) {
 
     }
+
 
     @Override
     protected int getContentView() {

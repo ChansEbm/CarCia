@@ -49,7 +49,7 @@ public class PhotoWallActivity extends BaseAty<PhotoWallBean> {
     protected void initViews() {
         defaultTitleBar(this).setTitle(R.string.gallery);
         recyclerView = photoWall.recyclerView;
-        list = getLatestImagePaths(100);
+        list = getLatestImagePaths(20);
         commonBinderAdapter = new CommonBinderAdapter<PhotoWallBean>(this, R.layout.item_photo_wall,
                 list) {
             @Override

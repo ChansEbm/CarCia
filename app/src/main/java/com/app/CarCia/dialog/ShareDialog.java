@@ -24,8 +24,7 @@ public class ShareDialog implements View.OnClickListener {
         diaShareLayout = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout
                 .dia_share, null, false);
         initOnClickListener();
-        materialDialog = new MaterialDialog(context).setContentView(diaShareLayout.getRoot())
-                .setTitle(R.string.ssdk_oks_share_to)
+        materialDialog = new MaterialDialog(context).setView(diaShareLayout.getRoot())
                 .setCanceledOnTouchOutside(true);
     }
 
@@ -35,12 +34,11 @@ public class ShareDialog implements View.OnClickListener {
     }
 
     private void initOnClickListener() {
-        diaShareLayout.ibQq.setOnClickListener(this);
-        diaShareLayout.ibQzone.setOnClickListener(this);
-        diaShareLayout.ibShortMessage.setOnClickListener(this);
-        diaShareLayout.ibTencentWeibo.setOnClickListener(this);
-        diaShareLayout.ibWechat.setOnClickListener(this);
-        diaShareLayout.ibWechatMoment.setOnClickListener(this);
+        diaShareLayout.tvQq.setOnClickListener(this);
+        diaShareLayout.tvQzone.setOnClickListener(this);
+        diaShareLayout.tvShortMessage.setOnClickListener(this);
+        diaShareLayout.tvWechat.setOnClickListener(this);
+        diaShareLayout.tvWechatMoment.setOnClickListener(this);
     }
 
     @Override
@@ -48,22 +46,20 @@ public class ShareDialog implements View.OnClickListener {
         int id = v.getId();
         if (onShareItemClickListener != null)
             switch (id) {
-                case R.id.ib_qq:
+                case R.id.tv_qq:
                     onShareItemClickListener.onShareItemClick(SharePlatform.QQ);
                     break;
-                case R.id.ib_qzone:
+                case R.id.tv_qzone:
                     onShareItemClickListener.onShareItemClick(SharePlatform.Q_ZONE);
                     break;
-                case R.id.ib_short_message:
+                case R.id.tv_short_message:
                     onShareItemClickListener.onShareItemClick(SharePlatform.SHORT_MESSAGE);
                     break;
-                case R.id.ib_tencent_weibo:
-                    onShareItemClickListener.onShareItemClick(SharePlatform.QQ_WEIBO);
-                    break;
-                case R.id.ib_wechat:
+
+                case R.id.tv_wechat:
                     onShareItemClickListener.onShareItemClick(SharePlatform.WECHAT);
                     break;
-                case R.id.ib_wechat_moment:
+                case R.id.tv_wechat_moment:
                     onShareItemClickListener.onShareItemClick(SharePlatform.WECHAT_MOMENT);
                     break;
             }

@@ -15,7 +15,11 @@ import com.app.CarCia.R;
 import com.app.CarCia.adapters.JsonObjectListener;
 import com.app.CarCia.base.BaseFgm;
 import com.app.CarCia.dialog.DialDialog;
+import com.app.CarCia.dialog.ShareDialog;
 import com.app.CarCia.entity.UpdateBean;
+import com.app.CarCia.eum.SharePlatform;
+import com.app.CarCia.impl.OnShareItemClickListener;
+import com.app.CarCia.model.ShareModel;
 import com.app.CarCia.tools.AppTools;
 import com.app.CarCia.tools.DataCleanManager;
 import com.app.CarCia.tools.LogTools;
@@ -29,10 +33,11 @@ import java.util.Map;
 import me.drakeet.materialdialog.MaterialDialog;
 
 
-public class MoreFragment extends BaseFgm {
+public class MoreFragment extends BaseFgm implements OnShareItemClickListener {
 
     private MoreLayout moreLayout;
     private PackageInfo packageInfo;
+    private ShareModel shareModel;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -43,6 +48,7 @@ public class MoreFragment extends BaseFgm {
     @Override
     protected void initViews() {
         moreLayout = (MoreLayout) viewDataBinding;
+        shareModel = new ShareModel();
         try {
             packageInfo = getActivity().getPackageManager().getPackageInfo
                     (getActivity().getPackageName(), PackageManager.GET_CONFIGURATIONS);
@@ -58,6 +64,7 @@ public class MoreFragment extends BaseFgm {
         moreLayout.flytLogIn.setOnClickListener(this);
         moreLayout.flytTechnologySupport.setOnClickListener(this);
         moreLayout.flytUerGuide.setOnClickListener(this);
+        moreLayout.flytOnkeyShare.setOnClickListener(this);
         moreLayout.flytCheckUpdate.setOnClickListener(this);
         moreLayout.tvVersion.setText(packageInfo.versionName);
     }
@@ -77,6 +84,11 @@ public class MoreFragment extends BaseFgm {
                 break;
             case R.id.flyt_uer_guide:
                 start(UserGuideActivity.class);
+                break;
+            case R.id.flyt_onkey_share:
+                ShareDialog shareDialog = new ShareDialog(getActivity());
+                shareDialog.setOnShareItemClickListener(this);
+                shareDialog.show();
                 break;
             case R.id.flyt_check_update:
                 checkUpdate();
@@ -154,5 +166,35 @@ public class MoreFragment extends BaseFgm {
                 .color_snack_bar_background));
         sView.setLayoutParams(params);
         snackbar.show();
+    }
+
+    @Override
+    public void onShareItemClick(SharePlatform sharePlatform) {
+        ShareModel.ShareParams.titleUrl = "http://diy.appbaba.com/garcia/android";
+        ShareModel.ShareParams.title = "加西亚瓷砖";
+        ShareModel.ShareParams.text = "加西亚瓷砖始终为顾客提供最具创新价值的产品。";
+
+        shareModel.setSnackView(moreLayout.getRoot());
+        switch (sharePlatform) {
+            case Q_ZONE:
+                shareModel.shareToQZone();
+                break;
+            case QQ:
+                shareModel.shareToQQ();
+                break;
+            case QQ_WEIBO:
+                shareModel.shareToQQWeibo();
+                break;
+            case SHORT_MESSAGE:
+                shareModel.shareToShortMessage();
+                break;
+            case WECHAT:
+                shareModel.shareToWechatFriends();
+                break;
+            case WECHAT_MOMENT:
+                shareModel.shareToWechatMoment();
+                break;
+        }
+
     }
 }

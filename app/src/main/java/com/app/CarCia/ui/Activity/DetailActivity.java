@@ -187,7 +187,7 @@ public class DetailActivity extends BaseAty<ItemProductBean.ListEntity>
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_share, menu);
-        return false;
+        return true;
     }
 
     @Override
@@ -204,8 +204,8 @@ public class DetailActivity extends BaseAty<ItemProductBean.ListEntity>
     @Override
     public void onShareItemClick(SharePlatform sharePlatform) {
         ShareModel.ShareParams.imageUrl = list.get(currentPos).getImage();
-        ShareModel.ShareParams.text = "加西亚瓷砖介绍加西亚瓷砖介绍加西亚瓷砖介绍";
-        ShareModel.ShareParams.title = "加西亚瓷砖";
+        ShareModel.ShareParams.text = list.get(currentPos).getDescription();
+        ShareModel.ShareParams.title = list.get(currentPos).getH1();
         ShareModel.ShareParams.titleUrl = list.get(currentPos).getLinkProduct().get(0)
                 .getDetailUrl();
         shareModel.setSnackView(detailLayout.getRoot());

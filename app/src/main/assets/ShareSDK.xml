@@ -67,20 +67,19 @@
         SortId="1"/>
 
     <TencentWeibo
-        AppKey="1105026028"
-        AppSecret="nV3q7xKnHBfkHIz6"
+        AppKey="801307650"
+        AppSecret="ae36f4ee3946e1cbb98d6965b0b2ff5c"
         Enable="true"
         Id="2"
         RedirectUri="http://sharesdk.cn"
         SortId="2"/>
 
-    <!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->
     <QZone
         AppId="1105026028"
         AppKey="nV3q7xKnHBfkHIz6"
         Enable="true"
         Id="3"
-        ShareByAppClient="false"
+        ShareByAppClient="true"
         SortId="3"/>
 
     <!-- 

@@ -4,70 +4,93 @@
     <data class="DiaShareLayout"/>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:gravity="center"
-                  android:orientation="vertical">
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:background="@drawable/shape_share"
+                  android:clickable="true"
+                  android:orientation="vertical"
+                  android:paddingEnd="@dimen/item_horizontal_margin"
+                  android:paddingStart="5dp">
 
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:layout_marginBottom="@dimen/item_horizontal_margin"
+            android:layout_marginTop="@dimen/item_horizontal_margin"
+            android:gravity="center_vertical"
+            android:text="@string/ssdk_oks_share_to"
+            android:textColor="#c78f2c"
+            android:textSize="@dimen/text_large_size"
+            android:textStyle="bold"/>
 
-            <ImageButton
-                android:id="@+id/ib_wechat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:src="@mipmap/ssdk_oks_logo_wechat"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_line"/>
 
-            <ImageButton
-                android:id="@+id/ib_wechat_moment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/item_horizontal_margin"
-                android:layout_marginStart="@dimen/item_horizontal_margin"
-                android:background="@android:color/transparent"
-                android:src="@mipmap/ssdk_oks_logo_wechatmoments"/>
-
-            <ImageButton
-                android:id="@+id/ib_tencent_weibo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:src="@mipmap/ssdk_oks_logo_tencentweibo"/>
-        </LinearLayout>
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/item_vertical_margin"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="14dp">
 
-            <ImageButton
-                android:id="@+id/ib_qq"
+            <TextView
+                android:id="@+id/tv_wechat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:src="@mipmap/ssdk_oks_logo_qq"/>
+                android:clickable="true"
+                android:drawableTop="@mipmap/icon_wechat"
+                android:gravity="center"
+                android:text="微信"/>
 
-            <ImageButton
-                android:id="@+id/ib_qzone"
+
+            <TextView
+                android:id="@+id/tv_wechat_moment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/item_horizontal_margin"
-                android:layout_marginStart="@dimen/item_horizontal_margin"
-                android:background="@android:color/transparent"
-                android:src="@mipmap/ssdk_oks_logo_qzone"/>
+                android:layout_centerHorizontal="true"
+                android:clickable="true"
+                android:drawableTop="@mipmap/icon_wechat_moment"
+                android:gravity="center"
+                android:text="朋友圈"/>
 
-            <ImageButton
-                android:id="@+id/ib_short_message"
+            <TextView
+                android:id="@+id/tv_qq"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:src="@mipmap/ssdk_oks_logo_shortmessage"/>
-        </LinearLayout>
+                android:layout_alignParentEnd="true"
+                android:clickable="true"
+                android:drawableTop="@mipmap/icon_qq"
+                android:gravity="center"
+                android:text="@string/ssdk_qq"/>
+
+            <TextView
+                android:id="@+id/tv_qzone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_wechat"
+                android:layout_marginBottom="14dp"
+                android:layout_marginTop="14dp"
+                android:clickable="true"
+                android:drawableTop="@mipmap/icon_qzone"
+                android:gravity="center"
+                android:text="@string/ssdk_qzone"/>
+
+            <TextView
+                android:id="@+id/tv_short_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_wechat_moment"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="14dp"
+                android:clickable="true"
+                android:drawableTop="@mipmap/icon_short_message"
+                android:gravity="center"
+                android:text="@string/ssdk_shortmessage"/>
+        </RelativeLayout>
+
+
     </LinearLayout>
 </layout>

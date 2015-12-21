@@ -1,6 +1,7 @@
 package com.app.CarCia.ui.Activity;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -30,7 +31,6 @@ public class UserGuideActivity extends BaseAty {
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
                 return true;
             }
         });
@@ -45,5 +45,16 @@ public class UserGuideActivity extends BaseAty {
     @Override
     protected void onClick(int id, View view) {
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (webView.canGoBack()) {
+                webView.goBack();
+                return true;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

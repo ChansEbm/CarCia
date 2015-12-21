@@ -174,16 +174,17 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".broadcast.JpushReceiver"
+            android:name="com.app.CarCia.broadcast.JPushReceiver"
             android:enabled="true">
-            <intent-filter>
-                <action android:name="cn.jpush.android.intent.REGISTRATION"/>
-                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED"/>
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED"/>
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED"/>
 
-                <category android:name="com.app.CarCia"/>
-            </intent-filter>
+        <intent-filter>
+            <action android:name="cn.jpush.android.intent.REGISTRATION"/>
+            <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED"/>
+            <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED"/>
+            <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED"/>
+
+            <category android:name="com.app.CarCia"/>
+        </intent-filter>
         </receiver>
         <receiver
             android:name="cn.jpush.android.service.AlarmReceiver"
