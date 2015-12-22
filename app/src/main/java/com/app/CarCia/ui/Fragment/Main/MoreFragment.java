@@ -17,8 +17,6 @@ import com.app.CarCia.base.BaseFgm;
 import com.app.CarCia.dialog.DialDialog;
 import com.app.CarCia.dialog.ShareDialog;
 import com.app.CarCia.entity.UpdateBean;
-import com.app.CarCia.eum.SharePlatform;
-import com.app.CarCia.impl.OnShareItemClickListener;
 import com.app.CarCia.model.ShareModel;
 import com.app.CarCia.tools.AppTools;
 import com.app.CarCia.tools.DataCleanManager;
@@ -33,7 +31,7 @@ import java.util.Map;
 import me.drakeet.materialdialog.MaterialDialog;
 
 
-public class MoreFragment extends BaseFgm implements OnShareItemClickListener {
+public class MoreFragment extends BaseFgm {
 
     private MoreLayout moreLayout;
     private PackageInfo packageInfo;
@@ -87,7 +85,11 @@ public class MoreFragment extends BaseFgm implements OnShareItemClickListener {
                 break;
             case R.id.flyt_onkey_share:
                 ShareDialog shareDialog = new ShareDialog(getActivity());
-                shareDialog.setOnShareItemClickListener(this);
+                ShareModel.ShareParams params = new ShareModel.ShareParams();
+                params.setTitleUrl("http://diy.appbaba.com/garcia/android");
+                params.setTitle("加西亚瓷砖");
+                params.setText("加西亚瓷砖始终为顾客提供最具创新价值的产品。");
+                shareDialog.setShareParams(params);
                 shareDialog.show();
                 break;
             case R.id.flyt_check_update:
@@ -166,35 +168,5 @@ public class MoreFragment extends BaseFgm implements OnShareItemClickListener {
                 .color_snack_bar_background));
         sView.setLayoutParams(params);
         snackbar.show();
-    }
-
-    @Override
-    public void onShareItemClick(SharePlatform sharePlatform) {
-        ShareModel.ShareParams.titleUrl = "http://diy.appbaba.com/garcia/android";
-        ShareModel.ShareParams.title = "加西亚瓷砖";
-        ShareModel.ShareParams.text = "加西亚瓷砖始终为顾客提供最具创新价值的产品。";
-
-        shareModel.setSnackView(moreLayout.getRoot());
-        switch (sharePlatform) {
-            case Q_ZONE:
-                shareModel.shareToQZone();
-                break;
-            case QQ:
-                shareModel.shareToQQ();
-                break;
-            case QQ_WEIBO:
-                shareModel.shareToQQWeibo();
-                break;
-            case SHORT_MESSAGE:
-                shareModel.shareToShortMessage();
-                break;
-            case WECHAT:
-                shareModel.shareToWechatFriends();
-                break;
-            case WECHAT_MOMENT:
-                shareModel.shareToWechatMoment();
-                break;
-        }
-
     }
 }

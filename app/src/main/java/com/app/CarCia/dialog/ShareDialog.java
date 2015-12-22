@@ -7,8 +7,8 @@ import android.view.View;
 
 import com.app.CarCia.R;
 import com.app.CarCia.databinding.DiaShareLayout;
-import com.app.CarCia.eum.SharePlatform;
-import com.app.CarCia.impl.OnShareItemClickListener;
+import com.app.CarCia.model.ShareModel;
+import com.app.CarCia.tools.LogTools;
 
 import me.drakeet.materialdialog.MaterialDialog;
 
@@ -18,7 +18,8 @@ import me.drakeet.materialdialog.MaterialDialog;
 public class ShareDialog implements View.OnClickListener {
     private MaterialDialog materialDialog;
     private DiaShareLayout diaShareLayout;
-    private OnShareItemClickListener onShareItemClickListener;
+    private ShareModel.ShareParams shareParams;
+    private ShareModel shareModel = new ShareModel();
 
     public ShareDialog(Context context) {
         diaShareLayout = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout
@@ -41,32 +42,37 @@ public class ShareDialog implements View.OnClickListener {
         diaShareLayout.tvWechatMoment.setOnClickListener(this);
     }
 
+    public void setShareParams(ShareModel.ShareParams params) {
+        this.shareParams = params;
+    }
+
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if (onShareItemClickListener != null)
-            switch (id) {
-                case R.id.tv_qq:
-                    onShareItemClickListener.onShareItemClick(SharePlatform.QQ);
-                    break;
-                case R.id.tv_qzone:
-                    onShareItemClickListener.onShareItemClick(SharePlatform.Q_ZONE);
-                    break;
-                case R.id.tv_short_message:
-                    onShareItemClickListener.onShareItemClick(SharePlatform.SHORT_MESSAGE);
-                    break;
-
-                case R.id.tv_wechat:
-                    onShareItemClickListener.onShareItemClick(SharePlatform.WECHAT);
-                    break;
-                case R.id.tv_wechat_moment:
-                    onShareItemClickListener.onShareItemClick(SharePlatform.WECHAT_MOMENT);
-                    break;
-            }
+        if (shareParams == null) {
+            LogTools.e("shareParams == null");
+            return;
+        }
+        shareModel.setShareParams(shareParams);
+        switch (id) {
+            case R.id.tv_qq:
+                shareModel.shareToQQ();
+                break;
+            case R.id.tv_qzone:
+                shareModel.shareToQZone();
+                break;
+            case R.id.tv_short_message:
+                shareModel.shareToShortMessage();
+                break;
+            case R.id.tv_wechat:
+                shareModel.shareToWechatFriends();
+                break;
+            case R.id.tv_wechat_moment:
+                shareModel.shareToWechatMoment();
+                break;
+        }
         materialDialog.dismiss();
     }
 
-    public void setOnShareItemClickListener(OnShareItemClickListener onShareItemClickListener) {
-        this.onShareItemClickListener = onShareItemClickListener;
-    }
+
 }

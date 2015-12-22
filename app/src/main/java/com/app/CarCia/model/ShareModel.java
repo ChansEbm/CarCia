@@ -29,13 +29,14 @@ public class ShareModel implements PlatformActionListener {
     private ShortMessage.ShareParams shortMessageParams = new ShortMessage.ShareParams();
     private Platform platform;
     private View snackView;
+    private ShareParams shareParams;
 
     public void shareToWechatFriends() {
-        wechatFirendsParams.setTitle(ShareParams.title);
-        wechatFirendsParams.setImageUrl(TextUtils.isEmpty(ShareParams.imageUrl) ? ShareParams
-                .imageStaticUrl : ShareParams.imageUrl);
-        wechatFirendsParams.setText(ShareParams.text);
-        wechatFirendsParams.setUrl(ShareParams.titleUrl);
+        wechatFirendsParams.setTitle(shareParams.getTitle());
+        wechatFirendsParams.setImageUrl(TextUtils.isEmpty(shareParams.getImageUrl()) ?
+                shareParams.getImageStaticUrl() : shareParams.getImageUrl());
+        wechatFirendsParams.setText(shareParams.getText());
+        wechatFirendsParams.setUrl(shareParams.getTitleUrl());
         wechatFirendsParams.setShareType(Platform.SHARE_WEBPAGE);
         platform = ShareSDK.getPlatform(Wechat.NAME);
         platform.setPlatformActionListener(this);
@@ -43,11 +44,11 @@ public class ShareModel implements PlatformActionListener {
     }
 
     public void shareToWechatMoment() {
-        wechatMomentParams.setTitle(ShareParams.title);
-        wechatMomentParams.setImageUrl(TextUtils.isEmpty(ShareParams.imageUrl) ? ShareParams
-                .imageStaticUrl : ShareParams.imageUrl);
-        wechatMomentParams.setText(ShareParams.text);
-        wechatMomentParams.setUrl(ShareParams.titleUrl);
+        wechatMomentParams.setTitle(shareParams.getTitle());
+        wechatMomentParams.setImageUrl(TextUtils.isEmpty(shareParams.getImageUrl()) ?
+                shareParams.getImageStaticUrl() : shareParams.getImageUrl());
+        wechatMomentParams.setText(shareParams.getText());
+        wechatMomentParams.setUrl(shareParams.getTitleUrl());
         wechatMomentParams.setShareType(Platform.SHARE_WEBPAGE);
         platform = ShareSDK.getPlatform(WechatMoments.NAME);
         platform.setPlatformActionListener(this);
@@ -55,55 +56,46 @@ public class ShareModel implements PlatformActionListener {
     }
 
     public void shareToQZone() {
-        qZoneShareParams.setTitle(ShareParams.title);
-        qZoneShareParams.setTitleUrl(ShareParams.titleUrl);
+        qZoneShareParams.setTitle(shareParams.getTitle());
+        qZoneShareParams.setTitleUrl(shareParams.getTitleUrl());
         qZoneShareParams.setSiteUrl(ShareParams.siteUrl);
         qZoneShareParams.setSite(ShareParams.site);
-        qZoneShareParams.setImageUrl(TextUtils.isEmpty(ShareParams.imageUrl) ? ShareParams
-                .imageStaticUrl : ShareParams.imageUrl);
-        qZoneShareParams.setText(ShareParams.text);
+        qZoneShareParams.setImageUrl(TextUtils.isEmpty(shareParams.getImageUrl()) ?
+                shareParams.getImageStaticUrl() : shareParams.getImageUrl());
+        qZoneShareParams.setText(shareParams.getText());
         platform = ShareSDK.getPlatform(QZone.NAME);
         platform.setPlatformActionListener(this);
         platform.share(qZoneShareParams);
     }
 
     public void shareToQQ() {
-        qqParams.setTitle(ShareParams.title);
-        qqParams.setTitleUrl(ShareParams.titleUrl);
+        qqParams.setTitle(shareParams.getTitle());
+        qqParams.setTitleUrl(shareParams.getTitleUrl());
         qqParams.setSiteUrl(ShareParams.siteUrl);
         qqParams.setSite(ShareParams.site);
-        qqParams.setImageUrl(TextUtils.isEmpty(ShareParams.imageUrl) ? ShareParams.imageStaticUrl
-                : ShareParams.imageUrl);
-        qqParams.setText(ShareParams.text);
+        qqParams.setImageUrl(TextUtils.isEmpty(shareParams.getImageUrl()) ?
+                shareParams.getImageStaticUrl() : shareParams.getImageUrl());
+        qqParams.setText(shareParams.getText());
         platform = ShareSDK.getPlatform(QQ.NAME);
         platform.setPlatformActionListener(this);
         platform.share(qqParams);
     }
 
-    public void shareToQQWeibo() {
-        weiboParams.setTitle(ShareParams.title);
-        weiboParams.setUrl(ShareParams.titleUrl);
-        weiboParams.setSiteUrl(ShareParams.siteUrl);
-        weiboParams.setSite(ShareParams.site);
-        weiboParams.setImageUrl(TextUtils.isEmpty(ShareParams.imageUrl) ? ShareParams
-                .imageStaticUrl : ShareParams.imageUrl);
-        weiboParams.setText(ShareParams.text);
-        platform = ShareSDK.getPlatform(TencentWeibo.NAME);
-        platform.setPlatformActionListener(this);
-        platform.share(weiboParams);
-    }
-
     public void shareToShortMessage() {
-        shortMessageParams.setTitle(ShareParams.title);
-        shortMessageParams.setTitleUrl(ShareParams.titleUrl);
+        shortMessageParams.setTitle(shareParams.getTitle());
+        shortMessageParams.setTitleUrl(shareParams.getTitleUrl());
         shortMessageParams.setSiteUrl(ShareParams.siteUrl);
         shortMessageParams.setSite(ShareParams.site);
-        shortMessageParams.setImageUrl(TextUtils.isEmpty(ShareParams.imageUrl) ? ShareParams
-                .imageStaticUrl : ShareParams.imageUrl);
-        shortMessageParams.setText(ShareParams.text);
+        shortMessageParams.setImageUrl(TextUtils.isEmpty(shareParams.getImageUrl()) ?
+                shareParams.getImageStaticUrl() : shareParams.getImageUrl());
+        shortMessageParams.setText(shareParams.getText());
         platform = ShareSDK.getPlatform(ShortMessage.NAME);
         platform.setPlatformActionListener(this);
         platform.share(shortMessageParams);
+    }
+
+    public void setShareParams(ShareParams shareParams) {
+        this.shareParams = shareParams;
     }
 
     @Override
@@ -130,11 +122,52 @@ public class ShareModel implements PlatformActionListener {
     }
 
     public static class ShareParams {
-        public static String title = "加西亚瓷砖";
-        public static String text = "加西亚瓷砖始终为顾客提供最具创新价值的产品";
-        public static String imageUrl = "";
-        public static String titleUrl = "";
-        public static String imageStaticUrl = "http://diy.appbaba.com/garcia/android/logo.jpg";
+        public String title = "加西亚瓷砖";
+        public String text = "加西亚瓷砖始终为顾客提供最具创新价值的产品";
+        public String imageUrl = "";
+        public String titleUrl = "";
+        public String imageStaticUrl = "http://diy.appbaba.com/garcia/android/logo.jpg";
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public String getText() {
+            return text;
+        }
+
+        public void setText(String text) {
+            this.text = text;
+        }
+
+        public String getImageUrl() {
+            return imageUrl;
+        }
+
+        public void setImageUrl(String imageUrl) {
+            this.imageUrl = imageUrl;
+        }
+
+        public String getTitleUrl() {
+            return titleUrl;
+        }
+
+        public void setTitleUrl(String titleUrl) {
+            this.titleUrl = titleUrl;
+        }
+
+        public String getImageStaticUrl() {
+            return imageStaticUrl;
+        }
+
+        public void setImageStaticUrl(String imageStaticUrl) {
+            this.imageStaticUrl = imageStaticUrl;
+        }
+
         private static String site = "加西亚";
         private static String siteUrl = "http://m.garcia.net.cn/";
     }

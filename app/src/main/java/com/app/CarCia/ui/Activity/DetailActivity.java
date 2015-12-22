@@ -19,9 +19,7 @@ import com.app.CarCia.base.BaseAty;
 import com.app.CarCia.dialog.DetailZoomDialog;
 import com.app.CarCia.dialog.ShareDialog;
 import com.app.CarCia.entity.ItemProductBean;
-import com.app.CarCia.eum.SharePlatform;
 import com.app.CarCia.impl.DragStateChangedListener;
-import com.app.CarCia.impl.OnShareItemClickListener;
 import com.app.CarCia.impl.ScrollListener;
 import com.app.CarCia.model.ShareModel;
 import com.app.CarCia.widget.ClashViewPager;
@@ -36,7 +34,7 @@ import java.util.List;
 public class DetailActivity extends BaseAty<ItemProductBean.ListEntity>
         implements ScrollListener, ViewPager
         .OnPageChangeListener, DragStateChangedListener,
-        OnShareItemClickListener, Toolbar.OnMenuItemClickListener {
+        Toolbar.OnMenuItemClickListener {
 
     private VHDLayoutChild vhdChild;
     private VHDLayout vhdParent;
@@ -48,6 +46,7 @@ public class DetailActivity extends BaseAty<ItemProductBean.ListEntity>
     private int currentPos = -1;
     private ChildViewPagerAdapter childViewPagerAdapter;
     private ShareModel shareModel;
+    private ShareModel.ShareParams params = new ShareModel.ShareParams();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -193,44 +192,18 @@ public class DetailActivity extends BaseAty<ItemProductBean.ListEntity>
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         if (item.getItemId() == R.id.menu_share) {
+            params.setTitle(list.get(currentPos).getH1());
+            params.setImageUrl(list.get(currentPos).getImage());
+            params.setText(list.get(currentPos).getDescription());
+            params.setTitleUrl(list.get(currentPos).getShareUrl());
             ShareDialog shareDialog = new ShareDialog(this);
-            shareDialog.setOnShareItemClickListener(this);
+            shareDialog.setShareParams(params);
             shareDialog.show();
             return true;
         }
         return false;
     }
 
-    @Override
-    public void onShareItemClick(SharePlatform sharePlatform) {
-        ShareModel.ShareParams.imageUrl = list.get(currentPos).getImage();
-        ShareModel.ShareParams.text = list.get(currentPos).getDescription();
-        ShareModel.ShareParams.title = list.get(currentPos).getH1();
-        ShareModel.ShareParams.titleUrl = list.get(currentPos).getLinkProduct().get(0)
-                .getDetailUrl();
-        shareModel.setSnackView(detailLayout.getRoot());
-        switch (sharePlatform) {
-            case Q_ZONE:
-                shareModel.shareToQZone();
-                break;
-            case QQ:
-                shareModel.shareToQQ();
-                break;
-            case QQ_WEIBO:
-                shareModel.shareToQQWeibo();
-                break;
-            case SHORT_MESSAGE:
-                shareModel.shareToShortMessage();
-                break;
-            case WECHAT:
-                shareModel.shareToWechatFriends();
-                break;
-            case WECHAT_MOMENT:
-                shareModel.shareToWechatMoment();
-                break;
-        }
-
-    }
 
     class ViewPagerAdapter extends PagerAdapter {
 

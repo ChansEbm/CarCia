@@ -12,6 +12,11 @@ import android.webkit.WebViewClient;
 import com.app.CarCia.R;
 import com.app.CarCia.SpecialLayout;
 import com.app.CarCia.base.BaseFgm;
+import com.app.CarCia.dialog.ShareDialog;
+import com.app.CarCia.entity.ShareBean;
+import com.app.CarCia.model.ShareModel;
+import com.app.CarCia.tools.LogTools;
+import com.google.gson.Gson;
 
 import java.lang.annotation.Annotation;
 
@@ -42,16 +47,22 @@ public class SpecialFragment extends BaseFgm {
         webView.loadUrl("http://diy.appbaba.com/garcia/index" +
                 ".php?m=content&c=app&a=subject_list");
         webView.addJavascriptInterface(new WebJsonShare(), "share");
-
     }
 
     class WebJsonShare {
 
         @JavascriptInterface
-        void onShare(String json) {
-
+        public void onShare(String json) {
+            ShareBean shareBean = new Gson().fromJson(json, ShareBean.class);
+            ShareModel.ShareParams params = new ShareModel.ShareParams();
+            params.setTitle(shareBean.getTitle());
+            params.setText(shareBean.getContent());
+            params.setImageUrl(shareBean.getThumbUrl());
+            params.setTitleUrl(shareBean.getShareUrl());
+            ShareDialog shareDialog = new ShareDialog(getActivity());
+            shareDialog.setShareParams(params);
+            shareDialog.show();
         }
-
     }
 
 

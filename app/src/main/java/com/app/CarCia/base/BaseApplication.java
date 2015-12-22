@@ -35,7 +35,6 @@ public class BaseApplication extends Application implements TagAliasCallback {
         FileSaveTools.getInstance().init(this);
         ShareSDK.initSDK(this);
         JPushInterface.init(this);
-        JPushInterface.setAlias(this, "ibm", this);
         Logger.init("digital").setMethodCount(3).hideThreadInfo().setLogLevel
                 (LogLevel.FULL);
     }

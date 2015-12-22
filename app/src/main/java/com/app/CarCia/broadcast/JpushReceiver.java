@@ -28,6 +28,7 @@ public class JPushReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        LogTools.i(jPushListener == null);
         if (jPushListener != null)
             jPushListener.jPush(intent);
         LogTools.i(intent.getAction());

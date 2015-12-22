@@ -224,6 +224,7 @@ public class ItemProductBean {
             private String ProImg;
             private String DetailUrl;
 
+
             public void setProID(String ProID) {
                 this.ProID = ProID;
             }

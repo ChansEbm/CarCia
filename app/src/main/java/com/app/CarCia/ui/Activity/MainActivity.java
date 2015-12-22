@@ -19,8 +19,10 @@ import com.app.CarCia.AppKeyMap;
 import com.app.CarCia.MainBinding;
 import com.app.CarCia.R;
 import com.app.CarCia.base.BaseAty;
+import com.app.CarCia.broadcast.JPushReceiver;
 import com.app.CarCia.broadcast.UpdateUIBroadcast;
 import com.app.CarCia.entity.HomeBean;
+import com.app.CarCia.impl.JPushListener;
 import com.app.CarCia.impl.UpdateUIListener;
 import com.app.CarCia.tools.AppTools;
 import com.app.CarCia.tools.LogTools;
@@ -39,7 +41,7 @@ import cn.jpush.android.api.JPushInterface;
 import me.drakeet.materialdialog.MaterialDialog;
 
 public class MainActivity extends BaseAty implements RadioGroup.OnCheckedChangeListener,
-        UpdateUIListener {
+        UpdateUIListener, JPushListener {
 
     private FragmentTransaction fragmentTransaction;
     private List<Fragment> fragmentList = new ArrayList<>();
@@ -47,6 +49,7 @@ public class MainActivity extends BaseAty implements RadioGroup.OnCheckedChangeL
     private MainBinding mainBinding;
     private UpdateUIBroadcast broadcast;
     private HomeBean.ListEntity listEntity;
+    private com.app.CarCia.broadcast.JPushReceiver jPushReceiver = new JPushReceiver();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -204,12 +207,12 @@ public class MainActivity extends BaseAty implements RadioGroup.OnCheckedChangeL
         }).setCanceledOnTouchOutside(true).show();
     }
 
-    public class JPushReceiver extends BroadcastReceiver {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            LogTools.i(intent.getAction());
-            jPush(intent);
-        }
-    }
+//    public class JPushReceiver extends BroadcastReceiver {
+//
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//            LogTools.i(intent.getAction());
+//            jPush(intent);
+//        }
+//    }
 }
